@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:locket_clone/features/presentation/screens/login/bloc/login_bloc.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
+import 'features/presentation/auth/auth_stream.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (context) => LoginBloc(),
-        child: const LoginScreen(),
+        child: const AuthGate(),
       ),
     );
   }
