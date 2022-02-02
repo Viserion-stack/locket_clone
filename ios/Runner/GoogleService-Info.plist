@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>975773789579-mf86j0pmcenvgm5hng6hlmp7vuj2n3n5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.975773789579-mf86j0pmcenvgm5hng6hlmp7vuj2n3n5</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>975773789579-stbq3o3gu85g6i8claqirgfrku9bscb1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAtMI2k-nMgk0WPXtVp6RpEgbhS79XyTl4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>975773789579</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.locketClone</string>
+	<key>PROJECT_ID</key>
+	<string>lockteclone</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lockteclone.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:975773789579:ios:9d3e67ec266ea5921a938e</string>
+</dict>
+</plist>

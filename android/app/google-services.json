@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "975773789579",
+    "project_id": "lockteclone",
+    "storage_bucket": "lockteclone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975773789579:android:9b6baa5712fc9d101a938e",
+        "android_client_info": {
+          "package_name": "com.example.locket_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975773789579-tb6fknh453pj51ja5jika2rpferjrko5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNfdgL-65LYrDhQN3J7dsYMw7oOg-XIpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975773789579-tb6fknh453pj51ja5jika2rpferjrko5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
