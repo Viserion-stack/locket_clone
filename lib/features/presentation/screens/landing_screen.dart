@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -10,7 +11,36 @@ class LandingScreen extends StatefulWidget {
   _LandingScreenState createState() => _LandingScreenState();
 }
 
-class _LandingScreenState extends State<LandingScreen> {
+class _LandingScreenState extends State<LandingScreen>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 15),
+    );
+    _animation = CurvedAnimation(
+      curve: Curves.linear,
+      parent: _animationController,
+    )
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((animationStatus) {
+        if (animationStatus == AnimationStatus.completed) {
+          // _animationController.reverse().then((value) {
+          //_animationController.reverse();
+          // });
+        }
+      });
+    _animationController.repeat(reverse: true);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +52,14 @@ class _LandingScreenState extends State<LandingScreen> {
             child: Image.asset(
               'assets/images/landing.jpg',
               fit: BoxFit.cover,
+              alignment: FractionalOffset(_animation.value, 0),
             ),
           ),
           Container(
-              height: double.infinity,
-              width: double.infinity,
-              color: Color.fromRGBO(0, 0, 0, 200)),
+            height: double.infinity,
+            width: double.infinity,
+            color: Color.fromRGBO(0, 0, 0, 120),
+          ),
           Positioned(
             top: MediaQuery.of(context).size.height * .35,
             left: MediaQuery.of(context).size.width * .15,
@@ -44,7 +76,11 @@ class _LandingScreenState extends State<LandingScreen> {
                 child: Text(
                   'LOCKET',
                   style: TextStyle(
-                      fontSize: 65, color: Colors.white, letterSpacing: 5),
+                    fontSize: 65,
+                    color: Colors.white,
+                    letterSpacing: 5,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
               SizedBox(
@@ -89,7 +125,9 @@ class _LandingScreenState extends State<LandingScreen> {
                 height: 1,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(LoginScreen.routeName);
+                },
                 child: Text(
                   'Log in ->',
                   style: TextStyle(

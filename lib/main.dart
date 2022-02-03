@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:locket_clone/features/presentation/screens/login/bloc/login_bloc.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
@@ -19,9 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
+      },
       title: 'Locket clone',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.quicksandTextTheme(),
       ),
       home: BlocProvider(
         create: (context) => LoginBloc(),
