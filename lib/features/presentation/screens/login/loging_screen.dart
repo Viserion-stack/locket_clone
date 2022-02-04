@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/data/datasources/remote/remote.dart';
-import 'package:locket_clone/features/presentation/screens/login/bloc/login_bloc.dart';
-import 'package:provider/src/provider.dart';
+import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -41,10 +40,10 @@ class _LoginFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF3F1EB),
+      backgroundColor: context.themeData.scaffoldBackgroundColor,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0xFFF3F1EB),
+        backgroundColor: context.themeData.appBarTheme.backgroundColor,
         actions: [
           IconButton(
             highlightColor: Colors.transparent,
@@ -52,7 +51,7 @@ class _LoginFormWidget extends StatelessWidget {
             icon: Icon(
               Icons.help_outline,
             ),
-            iconSize: 30,
+            iconSize: AppInsets.xxMedium,
             color: Colors.black,
             onPressed: () {},
           ),
@@ -63,7 +62,7 @@ class _LoginFormWidget extends StatelessWidget {
           icon: Icon(
             Icons.arrow_back,
           ),
-          iconSize: 30,
+          iconSize: AppInsets.xxMedium,
           color: Colors.black,
           onPressed: () {
             Navigator.of(context).pop();
@@ -76,51 +75,71 @@ class _LoginFormWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 20,
+                height: AppInsets.xMedium,
               ),
               Text(
                 'Sing In',
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontSize: AppInsets.mLarge),
               ),
               SizedBox(
-                height: 60,
-                width: MediaQuery.of(context).size.width * 0.95,
+                height: AppInsets.xxxLarge,
+                width: context.screenSize.width * 0.95,
               ),
-              SizedBox(
-                height: 65,
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0.2,
-                    primary: Colors.white,
-                    onPrimary: Colors.white,
-                    textStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 40,
+              LoginScreenButton(
+                function: () {},
+                backgroundColorButton: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: AppInsets.xxMedium,
+                      height: AppInsets.xxMedium,
+                      child: Image.asset(
+                        'assets/images/googleIcon.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                  onPressed: () {},
+                    SizedBox(
+                      width: AppInsets.small,
+                    ),
+                    Text(
+                      'Sign in with Google',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: AppInsets.xMedium,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: AppInsets.mxMedium,
+              ),
+              LoginScreenButton(
+                function: () {},
+                backgroundColorButton: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: AppInsets.xxMedium,
+                      right: AppInsets.xxMedium,
+                      top: 20,
+                      bottom: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        child: Image.asset(
-                          'assets/images/googleIcon.png',
-                          fit: BoxFit.contain,
-                        ),
+                    children: const [
+                      FaIcon(
+                        FontAwesomeIcons.apple,
+                        color: Colors.black,
+                        size: AppInsets.xxMedium,
                       ),
                       SizedBox(
-                        width: 10,
+                        width: AppInsets.small,
                       ),
                       Text(
-                        'Sign in with Google',
+                        'Sign in with Apple',
                         style: TextStyle(
                           color: Colors.black54,
-                          fontSize: 20,
+                          fontSize: AppInsets.xMedium,
                         ),
                       ),
                     ],
@@ -128,65 +147,20 @@ class _LoginFormWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 25,
-              ),
-              SizedBox(
-                height: 65,
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0.2,
-                    primary: Colors.white,
-                    onPrimary: Colors.white,
-                    textStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 40,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 30.0, right: 30, top: 20, bottom: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.apple,
-                          color: Colors.black,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Sign in with Apple',
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 70,
+                height: AppInsets.xxmLarge,
               ),
               Text(
                 'Or use your email address ',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: AppInsets.xMedium),
               ),
               SizedBox(
-                height: 70,
+                height: AppInsets.xxmLarge,
               ),
               Form(
                 key: _formKey,
                 child: Container(
-                  height: 60,
-                  width: MediaQuery.of(context).size.width * 0.95,
+                  height: AppInsets.xxxLarge,
+                  width: context.screenSize.width * 0.95,
                   child: TextFormField(
                     key: const ValueKey('email'),
                     validator: (value) {
@@ -206,11 +180,11 @@ class _LoginFormWidget extends StatelessWidget {
                       fillColor: Colors.white,
                       filled: true,
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
+                        borderRadius: BorderRadius.circular(AppInsets.mSmall),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
+                        borderRadius: BorderRadius.circular(AppInsets.mSmall),
                         borderSide:
                             BorderSide(width: 0, style: BorderStyle.none),
                       ),
@@ -220,41 +194,58 @@ class _LoginFormWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: AppInsets.xMedium,
               ),
-              Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFFFA142),
-                    onPrimary: Colors.white,
-                    textStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 40,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                  onPressed: () {
-                    // remoteDataSourceImpl.login(_email, _pasword);
-                    // context
-                    //     .read<LoginBloc>()
-                    //     .add(LoginEvent.loginSubmit(_email, _pasword));
-                  },
-                  child: Text(
-                    'CONTINUE',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
+              LoginScreenButton(
+                function: () {},
+                backgroundColorButton: Color(0xFFFFA142),
+                child: Text(
+                  'CONTINUE',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: AppInsets.xMedium,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LoginScreenButton extends StatelessWidget {
+  const LoginScreenButton({
+    Key? key,
+    required this.function,
+    required this.backgroundColorButton,
+    required this.child,
+  }) : super(key: key);
+  final Function function;
+  final Color backgroundColorButton;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: AppInsets.xxxxLarge,
+      width: context.screenSize.width * 0.95,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0.2,
+          primary: backgroundColorButton,
+          onPrimary: Colors.white,
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontSize: AppInsets.mLarge,
+          ),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppInsets.small)),
+        ),
+        onPressed: () {},
+        child: child,
       ),
     );
   }
