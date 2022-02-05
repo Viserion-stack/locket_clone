@@ -27,9 +27,7 @@ class AppTheme {
     );
     return theme.copyWith(
         appBarTheme: AppBarTheme(
-      elevation: 0,
-      backgroundColor: palette.appBarBackgroundColor
-    ));
+            elevation: 0, backgroundColor: palette.appBarBackgroundColor));
   }
 }
 

@@ -24,7 +24,7 @@ class _AuthGateState extends State<AuthGate> {
           );
         } else if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.hasData) {
-            return const HomePage();
+            return const HomeScreen();
           } else {
             return const LandingScreen();
           }

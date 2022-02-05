@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:locket_clone/features/data/datasources/remote/remote.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:locket_clone/features/presentation/screens/home_screen.dart';
+import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/Login-screen';
@@ -53,7 +55,9 @@ class _LoginFormWidget extends StatelessWidget {
             ),
             iconSize: AppInsets.xxMedium,
             color: Colors.black,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(QuestionsScreen.routeName);
+            },
           ),
         ],
         leading: IconButton(
@@ -197,7 +201,10 @@ class _LoginFormWidget extends StatelessWidget {
                 height: AppInsets.xMedium,
               ),
               LoginScreenButton(
-                function: () {},
+                function: () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(HomeScreen.routeName);
+                },
                 backgroundColorButton: Color(0xFFFFA142),
                 child: Text(
                   'CONTINUE',
@@ -223,7 +230,7 @@ class LoginScreenButton extends StatelessWidget {
     required this.backgroundColorButton,
     required this.child,
   }) : super(key: key);
-  final Function function;
+  final VoidCallback function;
   final Color backgroundColorButton;
   final Widget child;
 
@@ -244,7 +251,7 @@ class LoginScreenButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppInsets.small)),
         ),
-        onPressed: () {},
+        onPressed: function,
         child: child,
       ),
     );

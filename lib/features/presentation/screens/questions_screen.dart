@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../application/app_insets.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const routeName = '/Home-screen';
-  const HomeScreen({Key? key}) : super(key: key);
+class QuestionsScreen extends StatefulWidget {
+  static const routeName = '/Questions-screen';
+  const QuestionsScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _QuestionsScreenState createState() => _QuestionsScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //       iconSize: AppInsets.xxMedium,
       //       color: Colors.black,
       //       onPressed: () {
-      //         //Navigator.of(context).pushNamed(HomeScreen.);
+      //         //Navigator.of(context).pushNamed(QuestionsScreen.);
       //       },
       //     ),
       //   ],
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 iconSize: AppInsets.xxMedium,
                 color: Colors.black,
                 onPressed: () {
-                  //Navigator.of(context).pushNamed(HomeScreen.);
+                  //Navigator.of(context).pushNamed(QuestionsScreen.);
                 },
               ),
             ],
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               centerTitle: true,
               title: Text(
-                'Hi, Viserion!',
+                'Got a question?',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -114,36 +114,43 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   _userListTile(
                     lIcon: Icons.email,
-                    color: Color(0xFFFFA142),
-                    title: 'Get a quote',
-                    subTitle: 'Check my pirce',
+                    color: Colors.white,
+                    title: 'FAQ',
+                    subTitle:
+                        'Browse the knowledge base and read the most frequently asked questions.',
                     onTap: () {},
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
-                    tWidget: Expanded(
-                      child: Container(
-                        color: Colors.amber,
-                        height: 200,
-                        width: 100,
-                      ),
-                    ),
-                    // Image.asset(
-                    //   'assets/images/rece.png',
-                    //   fit: BoxFit.cover,
-                    // ),
                     //lIcon: Icons.call,
                     color: Colors.white,
-                    title: 'Refer a friend',
-                    subTitle: 'Refer your firend... win great prizes!',
+                    title: 'Contact with us',
+                    subTitle:
+                        'Speak to our consultant and get your questions answered.',
                     onTap: () {},
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
                     //lIcon: Icons.call,
-                    color: Colors.white54,
-                    title: 'Smart store',
-                    subTitle: 'Get exclusive discounts tech ->',
+                    color: Colors.white,
+                    title: 'Leave a feedback',
+                    subTitle: 'Tell us what\'s on your mind.',
+                    onTap: () {},
+                  ),
+                  const _userTileHeightSpace(height: 10),
+                  _userListTile(
+                    //lIcon: Icons.call,
+                    color: Colors.white,
+                    title: 'Licences',
+                    subTitle: 'Show Application licences.',
+                    onTap: () {},
+                  ),
+                  const _userTileHeightSpace(height: 10),
+                  _userListTile(
+                    //lIcon: Icons.call,
+                    color: Colors.white,
+                    title: 'Complains',
+                    subTitle: 'Tell us what went wrong.',
                     onTap: () {},
                   ),
                   const _userTileHeightSpace(height: 10),
@@ -162,13 +169,13 @@ class _userListTile extends StatelessWidget {
   final Color color;
   final String title;
   final String? subTitle;
-  final Widget? tWidget;
+  final IconData? tIcon;
   final VoidCallback? tIconCallBack;
   final VoidCallback? onTap;
 
   const _userListTile({
     this.subTitle,
-    this.tWidget,
+    this.tIcon,
     this.tIconCallBack,
     this.onTap,
     Key? key,
@@ -199,15 +206,13 @@ class _userListTile extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
         onTap: onTap,
-        trailing: tWidget == null
-            ? IconButton(
-                onPressed: tIconCallBack,
-                icon: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.black,
-                ),
-              )
-            : tWidget,
+        trailing: IconButton(
+          onPressed: tIconCallBack,
+          icon: Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }
