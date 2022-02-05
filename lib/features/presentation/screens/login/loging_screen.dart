@@ -42,10 +42,10 @@ class _LoginFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.themeData.scaffoldBackgroundColor,
+      backgroundColor: Color(0xFFF3F1EB),
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: context.themeData.appBarTheme.backgroundColor,
+        backgroundColor: Color(0xFFF3F1EB),
         actions: [
           IconButton(
             highlightColor: Colors.transparent,
