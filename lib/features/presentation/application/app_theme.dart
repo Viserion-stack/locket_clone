@@ -22,8 +22,9 @@ class AppTheme {
     final theme = ThemeData(
       primaryColor: palette.primaryColor,
       secondaryHeaderColor: palette.secondaryColor,
-      accentColor: palette.accentColor,
       scaffoldBackgroundColor: palette.scaffoldBackgroundColor,
+      colorScheme:
+          ColorScheme.fromSwatch().copyWith(secondary: palette.accentColor),
     );
     return theme.copyWith(
         appBarTheme: AppBarTheme(

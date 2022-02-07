@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
 class LandingScreen extends StatefulWidget {

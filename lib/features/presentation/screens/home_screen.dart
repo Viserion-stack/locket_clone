@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/screens/drawer/drawer.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
-import '../application/app_insets.dart';
+
+import 'login/loging_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/Home-screen';
@@ -13,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isExpanded = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -80,37 +83,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 primary: false,
                 shrinkWrap: true,
                 children: [
-                  _userListTile(
-                    lIcon: Icons.email,
-                    color: Color(0xFFFFA142),
-                    title: 'Get a quote',
-                    subTitle: 'Check my pirce',
-                    onTap: () {},
-                  ),
-                  const _userTileHeightSpace(height: 10),
-                  _userListTile(
-                    imagePath: 'assets/images/rece.png',
-                    tWidget: SizedBox(),
-                    // Image.asset(
-                    //   'assets/images/rece.png',
-                    //   fit: BoxFit.cover,
-                    // ),
-                    //lIcon: Icons.call,
-                    color: Colors.white,
-                    title: 'Refer a friend',
-                    subTitle: 'Refer your firend... win great prizes!',
-                    onTap: () {},
-                  ),
-                  const _userTileHeightSpace(height: 10),
-                  _userListTile(
-                    tWidget: SizedBox(),
-                    imagePath: 'assets/images/iPod.png',
-                    //lIcon: Icons.call,
-                    color: Colors.white54,
-                    title: 'Smart store',
-                    subTitle: 'Get exclusive discounts tech ->',
-                    onTap: () {},
-                  ),
+                  // _userListTile(
+                  //   lIcon: Icons.email,
+                  //   color: Color(0xFFFFA142),
+                  //   title: 'Get a quote',
+                  //   subTitle: 'Check my pirce',
+                  //   onTap: () {},
+                  // ),
+                  // const _userTileHeightSpace(height: 10),
+                  // _userListTile(
+                  //   imagePath: 'assets/images/rece.png',
+                  //   tWidget: SizedBox(),
+                  //   // Image.asset(
+                  //   //   'assets/images/rece.png',
+                  //   //   fit: BoxFit.cover,
+                  //   // ),
+                  //   //lIcon: Icons.call,
+                  //   color: Colors.white,
+                  //   title: 'Refer a friend',
+                  //   subTitle: 'Refer your firend... win great prizes!',
+                  //   onTap: () {},
+                  // ),
+                  // const _userTileHeightSpace(height: 10),
+                  // _userListTile(
+                  //   tWidget: SizedBox(),
+                  //   imagePath: 'assets/images/iPod.png',
+                  //   //lIcon: Icons.call,
+                  //   color: Colors.white54,
+                  //   title: 'Smart store',
+                  //   subTitle: 'Get exclusive discounts tech ->',
+                  //   onTap: () {},
+                  // ),
+                  ReferCard(),
                   const _userTileHeightSpace(height: 10),
                 ],
               ),
@@ -211,6 +215,148 @@ class _userTileHeightSpace extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
+    );
+  }
+}
+
+class ReferCard extends StatefulWidget {
+  const ReferCard({Key? key}) : super(key: key);
+
+  @override
+  _ReferCardState createState() => _ReferCardState();
+}
+
+class _ReferCardState extends State<ReferCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _slideAnimation;
+  late Animation<double> _opacityAnimation;
+  bool isExpanded = false;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 300,
+      ),
+    );
+    _slideAnimation = Tween<Offset>(
+      begin: Offset(0, -1.5),
+      end: Offset(0, 0),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
+    _opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeIn,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // ignore: todo
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isExpanded = !isExpanded;
+          print('asda');
+        });
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        elevation: 8.0,
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+          height: isExpanded ? 320 : 260,
+          // height: _heightAnimation.value.height,
+          constraints: BoxConstraints(minHeight: isExpanded ? 320 : 260),
+          width: context.screenSize.width * 0.75,
+          padding: EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.ac_unit),
+                  trailing: Icon(Icons.account_box),
+                  title: Text('ASDASDAS'),
+                ),
+                AnimatedContainer(
+                  constraints: BoxConstraints(
+                    minHeight: isExpanded ? 60 : 0,
+                    maxHeight: isExpanded ? 120 : 0,
+                  ),
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                  child: FadeTransition(
+                    opacity: _opacityAnimation,
+                    child: SlideTransition(
+                        position: _slideAnimation,
+                        child: Column(
+                          children: [
+                            Text('aSDA'),
+                            Text('aSDA'),
+                            Text('aSDA'),
+                            Text('aSDA'),
+                            Text('aSDA'),
+                            Text('aSDA'),
+                            LoginScreenButton(
+                              function: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed(HomeScreen.routeName);
+                              },
+                              backgroundColorButton: Color(0xFFFFA142),
+                              child: Text(
+                                'TELL MY FRIENDS ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: AppInsets.xMedium,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                            LoginScreenButton(
+                              function: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed(HomeScreen.routeName);
+                              },
+                              backgroundColorButton: Color(0xFFFFA142),
+                              child: Text(
+                                'SEE MY REWARDS',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: AppInsets.xMedium,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -17,27 +17,29 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _LoginFormWidget extends StatelessWidget {
   RemoteDataSourceImpl remoteDataSourceImpl = RemoteDataSourceImpl();
   _LoginFormWidget({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
+  // ignore: unused_field
   String _email = '';
-  String _pasword = '';
+  // String _pasword = '';
 
-  Future<void> _trySubmit() async {
-    final _isValid = _formKey.currentState!.validate();
-    if (_isValid) {
-      _formKey.currentState!.save();
-    }
+  // Future<void> _trySubmit() async {
+  //   final _isValid = _formKey.currentState!.validate();
+  //   if (_isValid) {
+  //     _formKey.currentState!.save();
+  //   }
 
-    try {
-      remoteDataSourceImpl.login(_email, _pasword);
-    } catch (error) {
-      //TODO error handle
-    } finally {
-      //TODO Do some after loging succefully or not
-    }
-  }
+  //   try {
+  //     remoteDataSourceImpl.login(_email, _pasword);
+  //   } catch (error) {
+  //     // error handle
+  //   } finally {
+  //     // Do some after loging succefully or not
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
