@@ -158,18 +158,17 @@ class _userListTile extends StatelessWidget {
         ),
         elevation: 0.0,
         child: ListTile(
-          contentPadding:
-              EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
+          contentPadding: EdgeInsets.only(left: 20, top: 20, bottom: 15),
           dense: true,
           title: Text(
             title,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           subtitle: subTitle == null
               ? null
               : Text(
                   subTitle!,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 18),
                 ),
           onTap: onTap,
           trailing: tWidget == null
@@ -178,6 +177,7 @@ class _userListTile extends StatelessWidget {
                   icon: Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.black,
+                    size: 18,
                   ),
                 )
               : SizedBox(
@@ -188,7 +188,7 @@ class _userListTile extends StatelessWidget {
       ),
       tWidget != null
           ? Positioned(
-              top: context.screenSize.height * .029,
+              top: context.screenSize.height * .01,
               right: context.screenSize.width * .03,
               child: SizedBox(
                   height: 120,
@@ -276,136 +276,155 @@ class _ReferCardState extends State<ReferCard>
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
-        height: isExpanded ? 450 : 160,
+        height: isExpanded ? 450 : 170,
         // height: _heightAnimation.value.height,
         constraints: BoxConstraints(minHeight: isExpanded ? 450 : 170),
         width: context.screenSize.width * 0.75,
         padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 5),
         child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              _userListTile(
-                imagePath: 'assets/images/rece.png',
-                tWidget: SizedBox(),
-                // Image.asset(
-                //   'assets/images/rece.png',
-                //   fit: BoxFit.cover,
-                // ),
-                //lIcon: Icons.call,
-                color: Colors.white,
-                title: 'Refer a friend',
-                subTitle: 'Refer your firend... win great prizes!',
-                onTap: () {},
-              ),
-              isExpanded
-                  ? SizedBox(
-                      height: 1,
-                      child: Divider(
-                        thickness: 1,
-                        indent: 15,
-                        endIndent: 15,
-                      ),
-                    )
-                  : GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isExpanded = !isExpanded;
-                        });
-                      },
-                      child: Icon(
-                        Icons.keyboard_arrow_down_outlined,
-                        color: Colors.grey,
-                        size: 35,
-                      ),
-                    ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        'Invite your friend to Locket and you\'ll get a mystery prize 60 days from their policy start date.',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                        textAlign: TextAlign.justify,
-                      ),
-                    ),
-                    Text(
-                      'vise8025.',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      'Your referal code.',
-                      style: TextStyle(fontSize: 17, color: Colors.grey),
-                    ),
-                  ],
+          child: Stack(children: [
+            Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 18,
+                  
                 ),
-              ),
-              LoginScreenButton(
-                function: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(HomeScreen.routeName);
-                },
-                backgroundColorButton: Color(0xFFFFA142),
-                child: Text(
-                  'TELL MY FRIENDS ',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: AppInsets.xMedium,
-                    fontWeight: FontWeight.w700,
+                Stack(children: [
+                  _userListTile(
+                    imagePath: 'assets/images/rece.png',
+                    tWidget: SizedBox(),
+                    // Image.asset(
+                    //   'assets/images/rece.png',
+                    //   fit: BoxFit.cover,
+                    // ),
+                    //lIcon: Icons.call,
+                    color: Colors.white,
+                    title: 'Refer a friend',
+                    subTitle: 'Refer your firend... win great prizes!',
+                    onTap: () {},
+                  ),
+                ]),
+                isExpanded
+                    ? SizedBox(
+                        height: 1,
+                        child: Divider(
+                          thickness: 1,
+                          indent: 15,
+                          endIndent: 15,
+                        ),
+                      )
+                    : GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isExpanded = !isExpanded;
+                          });
+                        },
+                        child: Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          color: Colors.grey,
+                          size: 30,
+                        ),
+                      ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          'Invite your friend to Locket and you\'ll get a mystery prize 60 days from their policy start date.',
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                      Text(
+                        'vise8025.',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'Your referal code.',
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              _userTileHeightSpace(
-                height: 22,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(12),
-                  ),
-                ),
-                child: LoginScreenButton(
+                LoginScreenButton(
                   function: () {
                     Navigator.of(context)
                         .pushReplacementNamed(HomeScreen.routeName);
                   },
-                  backgroundColorButton: Colors.white,
+                  backgroundColorButton: Color(0xFFFFA142),
                   child: Text(
-                    'SEE MY REWARDS',
+                    'TELL MY FRIENDS ',
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.black,
                       fontSize: AppInsets.xMedium,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-              ),
-              !isExpanded
-                  ? SizedBox(
-                      height: 10,
-                    )
-                  : GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isExpanded = !isExpanded;
-                        });
-                      },
-                      child: Icon(
-                        Icons.keyboard_arrow_up_outlined,
+                _userTileHeightSpace(
+                  height: 22,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.grey),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(12),
+                    ),
+                  ),
+                  child: LoginScreenButton(
+                    function: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(HomeScreen.routeName);
+                    },
+                    backgroundColorButton: Colors.white,
+                    child: Text(
+                      'SEE MY REWARDS',
+                      style: TextStyle(
                         color: Colors.grey,
-                        size: 35,
+                        fontSize: AppInsets.xMedium,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
+                  ),
+                ),
+                !isExpanded
+                    ? SizedBox(
+                        height: 10,
+                      )
+                    : GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isExpanded = !isExpanded;
+                          });
+                        },
+                        child: Icon(
+                          Icons.keyboard_arrow_up_outlined,
+                          color: Colors.grey,
+                          size: 35,
+                        ),
+                      ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+            Positioned(
+              top: context.screenSize.height*0.01,
+              left: context.screenSize.width * 0.05,
+              child: SizedBox(
+                  height: 35,
+                  width: 35,
+                  child: Image.asset(
+                    'assets/images/messageIcon.png',
+                    fit: BoxFit.fitWidth,
+                  )),
+            ),
+          ]),
         ),
       ),
     );
