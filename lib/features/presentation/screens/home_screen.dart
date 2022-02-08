@@ -83,13 +83,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 primary: false,
                 shrinkWrap: true,
                 children: [
-                  // _userListTile(
-                  //   lIcon: Icons.email,
-                  //   color: Color(0xFFFFA142),
-                  //   title: 'Get a quote',
-                  //   subTitle: 'Check my pirce',
-                  //   onTap: () {},
-                  // ),
+                  _userListTile(
+                    lIcon: Icons.email,
+                    color: Color(0xFFFFA142),
+                    title: 'Get a quote',
+                    subTitle: 'Check my pirce',
+                    onTap: () {},
+                  ),
                   // const _userTileHeightSpace(height: 10),
                   // _userListTile(
                   //   imagePath: 'assets/images/rece.png',
@@ -159,7 +159,7 @@ class _userListTile extends StatelessWidget {
         elevation: 0.0,
         child: ListTile(
           contentPadding:
-              EdgeInsets.symmetric(vertical: 25.0, horizontal: 25.0),
+              EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
           dense: true,
           title: Text(
             title,
@@ -268,92 +268,143 @@ class _ReferCardState extends State<ReferCard>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isExpanded = !isExpanded;
-          print('asda');
-        });
-      },
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        elevation: 8.0,
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeIn,
-          height: isExpanded ? 320 : 260,
-          // height: _heightAnimation.value.height,
-          constraints: BoxConstraints(minHeight: isExpanded ? 320 : 260),
-          width: context.screenSize.width * 0.75,
-          padding: EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                ListTile(
-                  leading: Icon(Icons.ac_unit),
-                  trailing: Icon(Icons.account_box),
-                  title: Text('ASDASDAS'),
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 0.0,
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+        height: isExpanded ? 450 : 160,
+        // height: _heightAnimation.value.height,
+        constraints: BoxConstraints(minHeight: isExpanded ? 450 : 170),
+        width: context.screenSize.width * 0.75,
+        padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 5),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              _userListTile(
+                imagePath: 'assets/images/rece.png',
+                tWidget: SizedBox(),
+                // Image.asset(
+                //   'assets/images/rece.png',
+                //   fit: BoxFit.cover,
+                // ),
+                //lIcon: Icons.call,
+                color: Colors.white,
+                title: 'Refer a friend',
+                subTitle: 'Refer your firend... win great prizes!',
+                onTap: () {},
+              ),
+              isExpanded
+                  ? SizedBox(
+                      height: 1,
+                      child: Divider(
+                        thickness: 1,
+                        indent: 15,
+                        endIndent: 15,
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isExpanded = !isExpanded;
+                        });
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: Colors.grey,
+                        size: 35,
+                      ),
+                    ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Text(
+                        'Invite your friend to Locket and you\'ll get a mystery prize 60 days from their policy start date.',
+                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    Text(
+                      'vise8025.',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      'Your referal code.',
+                      style: TextStyle(fontSize: 17, color: Colors.grey),
+                    ),
+                  ],
                 ),
-                AnimatedContainer(
-                  constraints: BoxConstraints(
-                    minHeight: isExpanded ? 60 : 0,
-                    maxHeight: isExpanded ? 120 : 0,
+              ),
+              LoginScreenButton(
+                function: () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(HomeScreen.routeName);
+                },
+                backgroundColorButton: Color(0xFFFFA142),
+                child: Text(
+                  'TELL MY FRIENDS ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: AppInsets.xMedium,
+                    fontWeight: FontWeight.w700,
                   ),
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
-                  child: FadeTransition(
-                    opacity: _opacityAnimation,
-                    child: SlideTransition(
-                        position: _slideAnimation,
-                        child: Column(
-                          children: [
-                            Text('aSDA'),
-                            Text('aSDA'),
-                            Text('aSDA'),
-                            Text('aSDA'),
-                            Text('aSDA'),
-                            Text('aSDA'),
-                            LoginScreenButton(
-                              function: () {
-                                Navigator.of(context)
-                                    .pushReplacementNamed(HomeScreen.routeName);
-                              },
-                              backgroundColorButton: Color(0xFFFFA142),
-                              child: Text(
-                                'TELL MY FRIENDS ',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: AppInsets.xMedium,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                            LoginScreenButton(
-                              function: () {
-                                Navigator.of(context)
-                                    .pushReplacementNamed(HomeScreen.routeName);
-                              },
-                              backgroundColorButton: Color(0xFFFFA142),
-                              child: Text(
-                                'SEE MY REWARDS',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: AppInsets.xMedium,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ],
-                        )),
+                ),
+              ),
+              _userTileHeightSpace(
+                height: 22,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(12),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
+                child: LoginScreenButton(
+                  function: () {
+                    Navigator.of(context)
+                        .pushReplacementNamed(HomeScreen.routeName);
+                  },
+                  backgroundColorButton: Colors.white,
+                  child: Text(
+                    'SEE MY REWARDS',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: AppInsets.xMedium,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
-              ],
-            ),
+              ),
+              !isExpanded
+                  ? SizedBox(
+                      height: 10,
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isExpanded = !isExpanded;
+                        });
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_up_outlined,
+                        color: Colors.grey,
+                        size: 35,
+                      ),
+                    ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           ),
         ),
       ),
