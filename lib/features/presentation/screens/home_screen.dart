@@ -5,6 +5,7 @@ import 'package:locket_clone/features/presentation/screens/drawer/drawer.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 
 import 'login/loging_screen.dart';
+import 'map/maps_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/Home-screen';
@@ -88,7 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Color(0xFFFFA142),
                     title: 'Get a quote',
                     subTitle: 'Check my pirce',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed(MapScreen.routeName);
+                    },
                   ),
                   // const _userTileHeightSpace(height: 10),
                   // _userListTile(
@@ -287,7 +290,6 @@ class _ReferCardState extends State<ReferCard>
               children: <Widget>[
                 SizedBox(
                   height: 18,
-                  
                 ),
                 Stack(children: [
                   _userListTile(
@@ -414,7 +416,7 @@ class _ReferCardState extends State<ReferCard>
               ],
             ),
             Positioned(
-              top: context.screenSize.height*0.01,
+              top: context.screenSize.height * 0.01,
               left: context.screenSize.width * 0.05,
               child: SizedBox(
                   height: 35,

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
 import 'package:locket_clone/features/presentation/screens/login/bloc/login_bloc.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
+import 'package:locket_clone/features/presentation/screens/map/maps_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
 
 import 'features/presentation/auth/auth_stream.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         QuestionsScreen.routeName: (ctx) => const QuestionsScreen(),
         HomeScreen.routeName: (ctx) => const HomeScreen(),
         MyProfileScreen.routeName: (ctx) => const MyProfileScreen(),
+        MapScreen.routeName: (ctx) => const MapScreen(),
       },
       title: 'Locket clone',
       theme: ThemeData(
