@@ -65,17 +65,22 @@ class _LandingScreenState extends State<LandingScreen>
             width: double.infinity,
             color: Color.fromRGBO(0, 0, 0, 120),
           ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * .35,
-            left: MediaQuery.of(context).size.width * .15,
-            child: Image.asset(
-              'assets/images/icon.png',
+          Align(
+            alignment: Alignment.center,
+            //top: MediaQuery.of(context).size.height * .35,
+            //left: MediaQuery.of(context).size.width * .15,
+            child: SizedBox(
+              height: 100,
+              width: 100,
+              child: Image.asset(
+                'assets/images/Icon.png',
+              ),
             ),
           ),
           Column(
             children: [
               SizedBox(
-                height: 90,
+                height: MediaQuery.of(context).size.height * .2,
               ),
               Center(
                 child: Text(
@@ -89,7 +94,7 @@ class _LandingScreenState extends State<LandingScreen>
                 ),
               ),
               SizedBox(
-                height: 450,
+                height: MediaQuery.of(context).size.height * .35,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(

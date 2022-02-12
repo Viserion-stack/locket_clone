@@ -107,18 +107,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   //   subTitle: 'Refer your firend... win great prizes!',
                   //   onTap: () {},
                   // ),
-                  // const _userTileHeightSpace(height: 10),
-                  // _userListTile(
-                  //   tWidget: SizedBox(),
-                  //   imagePath: 'assets/images/iPod.png',
-                  //   //lIcon: Icons.call,
-                  //   color: Colors.white54,
-                  //   title: 'Smart store',
-                  //   subTitle: 'Get exclusive discounts tech ->',
-                  //   onTap: () {},
-                  // ),
                   ReferCard(),
                   const _userTileHeightSpace(height: 10),
+                  _userListTile(
+                    tWidget: SizedBox(),
+                    imagePath: 'assets/images/iPod.png',
+                    //lIcon: Icons.call,
+                    color: Colors.white54,
+                    title: 'Smart store',
+                    subTitle: 'Get exclusive discounts tech ->',
+                    onTap: () {},
+                  ),
                 ],
               ),
             ),
@@ -192,9 +191,9 @@ class _userListTile extends StatelessWidget {
       tWidget != null
           ? Positioned(
               top: context.screenSize.height * .01,
-              right: context.screenSize.width * .03,
+              right: context.screenSize.width * .008,
               child: SizedBox(
-                  height: 120,
+                  height: 80,
                   width: 100,
                   child: Image.asset(
                     imagePath!,
@@ -279,12 +278,13 @@ class _ReferCardState extends State<ReferCard>
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
-        height: isExpanded ? 450 : 170,
+        height: isExpanded ? 455 : 170,
         // height: _heightAnimation.value.height,
-        constraints: BoxConstraints(minHeight: isExpanded ? 450 : 170),
+        constraints: BoxConstraints(minHeight: isExpanded ? 455 : 170),
         width: context.screenSize.width * 0.75,
         padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 5),
         child: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
           child: Stack(children: [
             Column(
               children: <Widget>[
