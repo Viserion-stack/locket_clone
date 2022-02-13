@@ -1,11 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:locket_clone/features/data/datasources/remote/remote.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/services/global_methods.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/Login-screen';
@@ -18,28 +22,64 @@ class LoginScreen extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class _LoginFormWidget extends StatelessWidget {
-  RemoteDataSourceImpl remoteDataSourceImpl = RemoteDataSourceImpl();
+class _LoginFormWidget extends StatefulWidget {
   _LoginFormWidget({Key? key}) : super(key: key);
+
+  @override
+  State<_LoginFormWidget> createState() => _LoginFormWidgetState();
+}
+
+class _LoginFormWidgetState extends State<_LoginFormWidget> {
+  RemoteDataSourceImpl remoteDataSourceImpl = RemoteDataSourceImpl();
+
   final _formKey = GlobalKey<FormState>();
+
   // ignore: unused_field
   String _email = '';
+
+  GlobalMethods _globalMethods = GlobalMethods();
+
   // String _pasword = '';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Future<void> _trySubmit() async {
-  //   final _isValid = _formKey.currentState!.validate();
-  //   if (_isValid) {
-  //     _formKey.currentState!.save();
-  //   }
+  Future<void> _googleSingIn() async {
+    final googleSignIn = GoogleSignIn();
+    final googleAccount = await googleSignIn.signIn();
+    if (googleAccount != null) {
+      final googleAuth = await googleAccount.authentication;
+      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
+        try {
+          var date = DateTime.now().toString();
+          var parsedDate = DateTime.parse(date);
+          var formattedDate =
+              '${parsedDate.day}/${parsedDate.month}/${parsedDate.year}';
+          // ignore: unused_local_variable
+          final authResult = await _auth.signInWithCredential(
+              GoogleAuthProvider.credential(
+                  idToken: googleAuth.idToken,
+                  accessToken: googleAuth.accessToken));
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(authResult.user!.uid)
+              .set({
+            'id': authResult.user!.uid,
+            'name': authResult.user!.displayName,
+            'email': authResult.user!.email,
+            'phoneNumber': authResult.user!.phoneNumber,
+            'imageUrl': authResult.user!.photoURL,
+            'joinedDate': formattedDate,
+            //'createdAt': Timestamp.now(),
+          });
 
-  //   try {
-  //     remoteDataSourceImpl.login(_email, _pasword);
-  //   } catch (error) {
-  //     // error handle
-  //   } finally {
-  //     // Do some after loging succefully or not
-  //   }
-  // }
+          Navigator.canPop(context) ? Navigator.of(context).pop() : null;
+        } catch (error) {
+          _globalMethods.authDialog(context, error.toString());
+        } finally {
+          print('Logged');
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +133,7 @@ class _LoginFormWidget extends StatelessWidget {
                   width: context.screenSize.width * 0.95,
                 ),
                 LoginScreenButton(
-                  function: () {},
+                  function: _googleSingIn,
                   backgroundColorButton: Colors.white,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

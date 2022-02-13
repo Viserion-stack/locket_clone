@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
+import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+
+import '../aboutLocket.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -75,7 +78,11 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             text: 'About locket',
-            callback: () {},
+            callback: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(AboutLocket.routeName,
+                  arguments: 'https://locket.insure/about/');
+            },
           ),
           ListTileItem(
             icon: Icon(
@@ -84,7 +91,11 @@ class AppDrawer extends StatelessWidget {
               color: Colors.grey,
             ),
             text: 'Privacy Policy',
-            callback: () {},
+            callback: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(AboutLocket.routeName,
+                  arguments: 'https://locket.insure/privacy/');
+            },
           ),
           ListTileItem(
             icon: Icon(
@@ -93,7 +104,11 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             text: 'Terms of Service',
-            callback: () {},
+            callback: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(AboutLocket.routeName,
+                  arguments: 'https://locket.insure/terms-of-service/');
+            },
           ),
           ListTileItem(
             icon: Icon(
@@ -117,6 +132,7 @@ class AppDrawer extends StatelessWidget {
             ),
             text: 'Log Out',
             callback: () {
+              Navigator.of(context).pushNamed(LandingScreen.routeName);
               FirebaseAuth.instance.signOut();
             },
           ),

@@ -55,11 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 iconSize: AppInsets.xxMedium,
                 color: Colors.black,
                 onPressed: () {
-                  debugPrint('elo elo');
-
                   _scaffoldKey.currentState!.openEndDrawer();
-                  //Scaffold.of(context).openEndDrawer();
-                  //Navigator.of(context).pushNamed(HomeScreen.);
                 },
               ),
             ],

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:locket_clone/features/presentation/screens/aboutLocket.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
+import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/login/bloc/login_bloc.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 import 'package:locket_clone/features/presentation/screens/map/maps_screen.dart';
@@ -34,16 +36,15 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (ctx) => const HomeScreen(),
         MyProfileScreen.routeName: (ctx) => const MyProfileScreen(),
         MapScreen.routeName: (ctx) => const MapScreen(),
+        AboutLocket.routeName: (ctx) => const AboutLocket(),
+        LandingScreen.routeName: (ctx) => const LandingScreen(),
       },
       title: 'Locket clone',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: GoogleFonts.quicksandTextTheme(),
       ),
-      home: BlocProvider(
-        create: (context) => LoginBloc(),
-        child: const AuthGate(),
-      ),
+      home: const AuthGate(),
     );
   }
 }

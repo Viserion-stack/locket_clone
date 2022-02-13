@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
 class LandingScreen extends StatefulWidget {
+  static const routeName = 'Landing-Screen';
   const LandingScreen({Key? key}) : super(key: key);
 
   @override
@@ -136,7 +137,8 @@ class _LandingScreenState extends State<LandingScreen>
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(LoginScreen.routeName);
+                  Navigator.of(context)
+                      .pushReplacementNamed(LoginScreen.routeName);
                 },
                 child: Text(
                   'Log in ->',
