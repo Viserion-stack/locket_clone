@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
@@ -15,6 +16,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    var userToDisplay = user!.displayName!.split(' ');
     return Scaffold(
       backgroundColor: Color(0xFFF3F1EB),
       key: _scaffoldKey,
@@ -89,7 +92,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   children: [
                     _ColumnItem(
                       title: 'First name',
-                      subTitle: 'Viserion',
+                      subTitle: userToDisplay[0],
                     ),
                     Divider(
                       thickness: 1,
@@ -98,7 +101,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ),
                     _ColumnItem(
                       title: 'Last Name',
-                      subTitle: 'Viserion',
+                      subTitle: userToDisplay[1],
                     ),
                     Divider(
                       thickness: 1,
@@ -107,9 +110,11 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ),
                     _ColumnItem(
                       title: 'Email',
-                      subTitle: 'vaiserion.93@gmail.com',
+                      subTitle: user.email.toString(),
                     ),
-                    SizedBox(height: 5,)
+                    SizedBox(
+                      height: 5,
+                    )
                   ],
                 ),
               ),
@@ -134,13 +139,15 @@ class _ColumnItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
-            alignment: Alignment.topLeft,
-            child: Text(title, style: TextStyle(fontSize: 18),)),
+              alignment: Alignment.topLeft,
+              child: Text(
+                title,
+                style: TextStyle(fontSize: 18),
+              )),
           Text(
             subTitle,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          
         ],
       ),
     );

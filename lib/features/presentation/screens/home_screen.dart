@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:locket_clone/features/presentation/application/application.dart';
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       endDrawer: AppDrawer(),
       key: _scaffoldKey,
@@ -63,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
               background: Container(
                 color: Color(0xFFF3F1EB),
               ),
-              centerTitle: true,
+              centerTitle: false,
               title: Text(
-                'Hi, Viserion!',
+                'Hi, ${user!.displayName.toString()}!',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,

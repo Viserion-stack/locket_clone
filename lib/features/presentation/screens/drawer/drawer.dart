@@ -12,6 +12,8 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    var userToDisplay = user!.displayName!.split(' ');
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -24,21 +26,21 @@ class AppDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Viserion',
+                      userToDisplay[0],
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                       ),
                     ),
                     Text(
-                      'Viserion',
+                      userToDisplay[1],
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                       ),
                     ),
                     Text(
-                      'Jakiś mail@mail.com',
+                      user.email.toString(),
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -132,7 +134,8 @@ class AppDrawer extends StatelessWidget {
             ),
             text: 'Log Out',
             callback: () {
-              Navigator.of(context).pushNamed(LandingScreen.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(LandingScreen.routeName);
               FirebaseAuth.instance.signOut();
             },
           ),

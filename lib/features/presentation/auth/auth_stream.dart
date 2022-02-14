@@ -16,19 +16,13 @@ class AuthGate extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (snapshot.connectionState == ConnectionState.active) {
-            if (snapshot.hasData) {
-              print('MA DATA');
-              // Navigator.canPop(context) ? Navigator.of(context).pop() : null;
-              return const HomeScreen();
-            } else {
-              print('NIE MA DATA');
-              return const LandingScreen();
-            }
+          } else if (snapshot.hasData) {
+            return HomeScreen();
           } else if (snapshot.hasError) {
-            const Text('Error occured');
+            return Center(child: Text('Something Went Wrong!'));
+          } else {
+            return LandingScreen();
           }
-          return const LandingScreen();
         });
   }
 }

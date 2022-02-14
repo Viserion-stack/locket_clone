@@ -71,11 +71,11 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
             //'createdAt': Timestamp.now(),
           });
 
-          Navigator.canPop(context) ? Navigator.of(context).pop() : null;
+          Navigator.of(context).pushNamed(HomeScreen.routeName);
         } catch (error) {
           _globalMethods.authDialog(context, error.toString());
         } finally {
-          print('Logged');
+          //print('Logged');
         }
       }
     }
