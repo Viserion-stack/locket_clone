@@ -5,7 +5,7 @@ import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 
-import '../aboutLocket.dart';
+import '../../screens/aboutLocket.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);

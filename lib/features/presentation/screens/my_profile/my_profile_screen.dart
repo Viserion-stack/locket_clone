@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 
 class MyProfileScreen extends StatefulWidget {
   static const routeName = '/MyProfile-Screen';
@@ -21,50 +21,10 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFF3F1EB),
       key: _scaffoldKey,
-      appBar: AppBar(
-        leading: IconButton(
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          icon: Icon(
-            Icons.arrow_back,
-          ),
-          iconSize: AppInsets.xxMedium,
-          color: Colors.black,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        automaticallyImplyLeading: false,
-        elevation: 0.0,
-        backgroundColor: Color(0xFFF3F1EB),
-        actions: [
-          IconButton(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            icon: Icon(
-              Icons.help_outline,
-            ),
-            iconSize: AppInsets.xxMedium,
-            color: Colors.black,
-            onPressed: () {
-              Navigator.of(context).pushNamed(QuestionsScreen.routeName);
-            },
-          ),
-          IconButton(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            icon: Icon(
-              Icons.menu,
-            ),
-            iconSize: AppInsets.xxMedium,
-            color: Colors.black,
-            onPressed: () {
-              _scaffoldKey.currentState!.openEndDrawer();
-              //Scaffold.of(context).openEndDrawer();
-              //Navigator.of(context).pushNamed(HomeScreen.);
-            },
-          ),
-        ],
+      appBar: StandardAppbar(
+        onHelp: () =>
+            Navigator.of(context).pushNamed(QuestionsScreen.routeName),
+        onMenu: () => _scaffoldKey.currentState!.openEndDrawer(),
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 35),

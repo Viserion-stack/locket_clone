@@ -1,6 +1,8 @@
 class AppInsets {
   static const double xSmall = 5;
 
+  static const double mxSmall = 8;
+
   static const double small = 10;
 
   static const double mSmall = 12;

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:locket_clone/features/presentation/application/application.dart';
-import 'package:locket_clone/features/presentation/screens/drawer/drawer.dart';
+import 'package:locket_clone/features/presentation/widgets/drawer/drawer.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 
 import 'login/loging_screen.dart';

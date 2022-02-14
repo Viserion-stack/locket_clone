@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../application/app_insets.dart';
-import 'drawer/drawer.dart';
+import '../widgets/drawer/drawer.dart';
 
 class AboutLocket extends StatefulWidget {
   static const routeName = 'About-locket';
@@ -29,47 +30,10 @@ class _AboutLocketState extends State<AboutLocket> {
     return Scaffold(
       endDrawer: AppDrawer(),
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color(0xFFF3F1EB),
-        leading: IconButton(
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          icon: Icon(
-            Icons.arrow_back,
-          ),
-          iconSize: AppInsets.xxMedium,
-          color: Colors.black,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        actions: [
-          IconButton(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            icon: Icon(
-              Icons.help_outline,
-            ),
-            iconSize: AppInsets.xxMedium,
-            color: Colors.black,
-            onPressed: () {
-              Navigator.of(context).pushNamed(QuestionsScreen.routeName);
-            },
-          ),
-          IconButton(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            icon: Icon(
-              Icons.menu,
-            ),
-            iconSize: AppInsets.xxMedium,
-            color: Colors.black,
-            onPressed: () {
-              _scaffoldKey.currentState!.openEndDrawer();
-            },
-          ),
-        ],
-        elevation: 0.0,
+      appBar: StandardAppbar(
+        onHelp: () =>
+            Navigator.of(context).pushNamed(QuestionsScreen.routeName),
+        onMenu: () => _scaffoldKey.currentState!.openEndDrawer(),
       ),
       body: WebView(
         javascriptMode: JavascriptMode.unrestricted,

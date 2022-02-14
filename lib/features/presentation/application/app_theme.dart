@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract class Palette {
   late Color primaryColor;
@@ -20,6 +21,7 @@ class LightPalette extends Palette {
 class AppTheme {
   ThemeData theme(Palette palette) {
     final theme = ThemeData(
+      textTheme: GoogleFonts.quicksandTextTheme(),
       primaryColor: palette.primaryColor,
       secondaryHeaderColor: palette.secondaryColor,
       scaffoldBackgroundColor: palette.scaffoldBackgroundColor,
