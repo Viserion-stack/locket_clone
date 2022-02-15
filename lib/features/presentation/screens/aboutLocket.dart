@@ -5,7 +5,6 @@ import 'package:locket_clone/features/presentation/screens/questions_screen.dart
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../application/app_insets.dart';
 import '../widgets/drawer/drawer.dart';
 
 class AboutLocket extends StatefulWidget {

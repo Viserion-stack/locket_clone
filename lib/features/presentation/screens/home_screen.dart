@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       endDrawer: AppDrawer(),
       key: _scaffoldKey,
@@ -67,7 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               centerTitle: false,
               title: Text(
-                'Hi, ${user!.displayName.toString()}!',
+                user == null
+                    ? 'Hi Friend!'
+                    : 'Hi, ${user.displayName.toString()}!',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,

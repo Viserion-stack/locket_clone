@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
-import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
 import '../screens/home_screen.dart';
 

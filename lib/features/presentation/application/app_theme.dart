@@ -16,6 +16,10 @@ class LightPalette extends Palette {
   final Color scaffoldBackgroundColor = const Color(0xFFF3F1EB);
   @override
   final Color appBarBackgroundColor = const Color(0xFFF3F1EB);
+  @override
+  final Color secondaryColor = const Color(0xFFFFFF);
+  @override
+  final Color accentColor = const Color(0xFFFFFF);
 }
 
 class AppTheme {

@@ -17,7 +17,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    var userToDisplay = user!.displayName!.split(' ');
+    var userToDisplay = user?.displayName!.split(' ');
     return Scaffold(
       backgroundColor: Color(0xFFF3F1EB),
       key: _scaffoldKey,
@@ -52,7 +52,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   children: [
                     _ColumnItem(
                       title: 'First name',
-                      subTitle: userToDisplay[0],
+                      subTitle: userToDisplay == null
+                          ? 'First name'
+                          : userToDisplay[0],
                     ),
                     Divider(
                       thickness: 1,
@@ -61,7 +63,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ),
                     _ColumnItem(
                       title: 'Last Name',
-                      subTitle: userToDisplay[1],
+                      subTitle: userToDisplay == null
+                          ? 'Last name'
+                          : userToDisplay[1],
                     ),
                     Divider(
                       thickness: 1,
@@ -70,7 +74,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ),
                     _ColumnItem(
                       title: 'Email',
-                      subTitle: user.email.toString(),
+                      subTitle: user == null ? 'email' : user.email.toString(),
                     ),
                     SizedBox(
                       height: 5,

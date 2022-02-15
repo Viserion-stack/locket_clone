@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
@@ -13,7 +15,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    var userToDisplay = user!.displayName!.split(' ');
+    var userToDisplay = user?.displayName!.split(' ');
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -26,21 +28,21 @@ class AppDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      userToDisplay[0],
+                      userToDisplay == null ? 'Name' : userToDisplay[0],
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                       ),
                     ),
                     Text(
-                      userToDisplay[1],
+                      userToDisplay == null ? 'Last name' : userToDisplay[1],
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                       ),
                     ),
                     Text(
-                      user.email.toString(),
+                      user == null ? 'Email' : user.email.toString(),
                       style: TextStyle(
                         color: Colors.white,
                       ),
