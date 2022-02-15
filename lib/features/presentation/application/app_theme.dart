@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,9 +19,9 @@ class LightPalette extends Palette {
   @override
   final Color appBarBackgroundColor = const Color(0xFFF3F1EB);
   @override
-  final Color secondaryColor = const Color(0xFFFFFF);
+  final Color secondaryColor = const Color(0x00ffffff);
   @override
-  final Color accentColor = const Color(0xFFFFFF);
+  final Color accentColor = const Color(0x00ffffff);
 }
 
 class AppTheme {

@@ -52,7 +52,7 @@ class _LandingScreenState extends State<LandingScreen>
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: double.infinity,
             width: double.infinity,
             child: Image.asset(

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, camel_case_types
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,15 +20,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isExpanded = false;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
-      endDrawer: AppDrawer(),
+      endDrawer: const AppDrawer(),
       key: _scaffoldKey,
-      backgroundColor: Color(0xFFF3F1EB),
+      backgroundColor: const Color(0xFFF3F1EB),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -37,12 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
             stretch: true,
             expandedHeight: 150,
             elevation: 0.0,
-            backgroundColor: Color(0xFFF3F1EB),
+            backgroundColor: const Color(0xFFF3F1EB),
             actions: [
               IconButton(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                icon: Icon(
+                icon: const Icon(
                   Icons.help_outline,
                 ),
                 iconSize: AppInsets.xxMedium,
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                icon: Icon(
+                icon: const Icon(
                   Icons.menu,
                 ),
                 iconSize: AppInsets.xxMedium,
@@ -66,14 +66,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                color: Color(0xFFF3F1EB),
+                color: const Color(0xFFF3F1EB),
               ),
               centerTitle: false,
               title: Text(
                 user == null
                     ? 'Hi Friend!'
                     : 'Hi, ${user.displayName.toString()}!',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.normal),
@@ -82,14 +82,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 8.0),
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
               child: ListView(
                 primary: false,
                 shrinkWrap: true,
                 children: [
                   _userListTile(
                     lIcon: Icons.email,
-                    color: Color(0xFFFFA142),
+                    color: const Color(0xFFFFA142),
                     title: 'Get a quote',
                     subTitle: 'Check my pirce',
                     onTap: () {
@@ -110,10 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   //   subTitle: 'Refer your firend... win great prizes!',
                   //   onTap: () {},
                   // ),
-                  ReferCard(),
+                  const ReferCard(),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
-                    tWidget: SizedBox(),
+                    tWidget: const SizedBox(),
                     imagePath: 'assets/images/iPod.png',
                     //lIcon: Icons.call,
                     color: Colors.white54,
@@ -163,29 +163,29 @@ class _userListTile extends StatelessWidget {
         ),
         elevation: 0.0,
         child: ListTile(
-          contentPadding: EdgeInsets.only(left: 20, top: 20, bottom: 15),
+          contentPadding: const EdgeInsets.only(left: 20, top: 20, bottom: 15),
           dense: true,
           title: Text(
             title,
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           subtitle: subTitle == null
               ? null
               : Text(
                   subTitle!,
-                  style: TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 18),
                 ),
           onTap: onTap,
           trailing: tWidget == null
               ? IconButton(
                   onPressed: tIconCallBack,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.black,
                     size: 18,
                   ),
                 )
-              : SizedBox(
+              : const SizedBox(
                   width: 60,
                   height: 100,
                 ),
@@ -203,7 +203,7 @@ class _userListTile extends StatelessWidget {
                     fit: BoxFit.contain,
                   )),
             )
-          : SizedBox(
+          : const SizedBox(
               width: 100,
               height: 100,
             )
@@ -242,13 +242,13 @@ class _ReferCardState extends State<ReferCard>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 300,
       ),
     );
     _slideAnimation = Tween<Offset>(
-      begin: Offset(0, -1.5),
-      end: Offset(0, 0),
+      begin: const Offset(0, -1.5),
+      end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -279,25 +279,25 @@ class _ReferCardState extends State<ReferCard>
       ),
       elevation: 0.0,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
         height: isExpanded ? 455 : 170,
         // height: _heightAnimation.value.height,
         constraints: BoxConstraints(minHeight: isExpanded ? 455 : 170),
         width: context.screenSize.width * 0.75,
-        padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 5),
+        padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 5),
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Stack(children: [
             Column(
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 18,
                 ),
                 Stack(children: [
                   _userListTile(
                     imagePath: 'assets/images/rece.png',
-                    tWidget: SizedBox(),
+                    tWidget: const SizedBox(),
                     // Image.asset(
                     //   'assets/images/rece.png',
                     //   fit: BoxFit.cover,
@@ -310,7 +310,7 @@ class _ReferCardState extends State<ReferCard>
                   ),
                 ]),
                 isExpanded
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 1,
                         child: Divider(
                           thickness: 1,
@@ -324,7 +324,7 @@ class _ReferCardState extends State<ReferCard>
                             isExpanded = !isExpanded;
                           });
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_down_outlined,
                           color: Colors.grey,
                           size: 30,
@@ -333,7 +333,7 @@ class _ReferCardState extends State<ReferCard>
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    children: [
+                    children: const [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
@@ -361,8 +361,8 @@ class _ReferCardState extends State<ReferCard>
                     Navigator.of(context)
                         .pushReplacementNamed(HomeScreen.routeName);
                   },
-                  backgroundColorButton: Color(0xFFFFA142),
-                  child: Text(
+                  backgroundColorButton: const Color(0xFFFFA142),
+                  child: const Text(
                     'TELL MY FRIENDS ',
                     style: TextStyle(
                       color: Colors.black,
@@ -371,13 +371,13 @@ class _ReferCardState extends State<ReferCard>
                     ),
                   ),
                 ),
-                _userTileHeightSpace(
+                const _userTileHeightSpace(
                   height: 22,
                 ),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(12),
                     ),
                   ),
@@ -387,7 +387,7 @@ class _ReferCardState extends State<ReferCard>
                           .pushReplacementNamed(HomeScreen.routeName);
                     },
                     backgroundColorButton: Colors.white,
-                    child: Text(
+                    child: const Text(
                       'SEE MY REWARDS',
                       style: TextStyle(
                         color: Colors.grey,
@@ -398,7 +398,7 @@ class _ReferCardState extends State<ReferCard>
                   ),
                 ),
                 !isExpanded
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 10,
                       )
                     : GestureDetector(
@@ -407,13 +407,13 @@ class _ReferCardState extends State<ReferCard>
                             isExpanded = !isExpanded;
                           });
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_up_outlined,
                           color: Colors.grey,
                           size: 35,
                         ),
                       ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],

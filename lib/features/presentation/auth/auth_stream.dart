@@ -7,6 +7,7 @@ import '../screens/home_screen.dart';
 class AuthGate extends StatelessWidget {
   const AuthGate({Key? key}) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
@@ -16,11 +17,11 @@ class AuthGate extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
-            return HomeScreen();
+            return const HomeScreen();
           } else if (snapshot.hasError) {
-            return Center(child: Text('Something Went Wrong!'));
+            return const Center(child: Text('Something Went Wrong!'));
           } else {
-            return LandingScreen();
+            return const LandingScreen();
           }
         });
   }

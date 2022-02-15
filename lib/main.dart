@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
-import 'package:locket_clone/features/presentation/screens/aboutLocket.dart';
+import 'package:locket_clone/features/presentation/screens/about_locket.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
 import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';

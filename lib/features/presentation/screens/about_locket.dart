@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
@@ -16,7 +16,7 @@ class AboutLocket extends StatefulWidget {
 }
 
 class _AboutLocketState extends State<AboutLocket> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
@@ -27,7 +27,7 @@ class _AboutLocketState extends State<AboutLocket> {
   Widget build(BuildContext context) {
     final url = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
-      endDrawer: AppDrawer(),
+      endDrawer: const AppDrawer(),
       key: _scaffoldKey,
       appBar: StandardAppbar(
         onHelp: () =>

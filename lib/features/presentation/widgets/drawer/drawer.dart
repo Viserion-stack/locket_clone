@@ -7,7 +7,7 @@ import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 
-import '../../screens/aboutLocket.dart';
+import '../../screens/about_locket.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -21,38 +21,38 @@ class AppDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: Color(0xff162222)),
+            decoration: const BoxDecoration(color: Color(0xff162222)),
             child: Padding(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       userToDisplay == null ? 'Name' : userToDisplay[0],
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                       ),
                     ),
                     Text(
                       userToDisplay == null ? 'Last name' : userToDisplay[1],
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                       ),
                     ),
                     Text(
                       user == null ? 'Email' : user.email.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                     ),
                   ]),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.home_outlined,
               color: Color(0xFFFFA142),
               size: 30,
@@ -64,7 +64,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.person_outline,
               color: Color(0xFFFFA142),
               size: 30,
@@ -76,7 +76,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.info_outline,
               color: Colors.grey,
               size: 30,
@@ -89,7 +89,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.privacy_tip_outlined,
               size: 30,
               color: Colors.grey,
@@ -102,7 +102,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.policy_outlined,
               color: Colors.grey,
               size: 30,
@@ -115,7 +115,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.help_outline,
               color: Colors.grey,
               size: 30,
@@ -125,11 +125,11 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed(QuestionsScreen.routeName);
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           ListTileItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.logout_outlined,
               color: Colors.grey,
               size: 30,
@@ -161,12 +161,12 @@ class ListTileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: ListTile(
         leading: icon,
         title: Text(
           text,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
         onTap: callback,
       ),

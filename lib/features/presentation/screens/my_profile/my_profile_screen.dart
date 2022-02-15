@@ -12,14 +12,14 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class _MyProfileScreenState extends State<MyProfileScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     var userToDisplay = user?.displayName!.split(' ');
     return Scaffold(
-      backgroundColor: Color(0xFFF3F1EB),
+      backgroundColor: const Color(0xFFF3F1EB),
       key: _scaffoldKey,
       appBar: StandardAppbar(
         onHelp: () =>
@@ -27,11 +27,11 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
         onMenu: () => _scaffoldKey.currentState!.openEndDrawer(),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 35),
+        padding: const EdgeInsets.only(top: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Align(
+            const Align(
               alignment: Alignment.center,
               child: Text(
                 'Account details',
@@ -56,7 +56,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           ? 'First name'
                           : userToDisplay[0],
                     ),
-                    Divider(
+                    const Divider(
                       thickness: 1,
                       indent: 15,
                       endIndent: 15,
@@ -67,7 +67,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           ? 'Last name'
                           : userToDisplay[1],
                     ),
-                    Divider(
+                    const Divider(
                       thickness: 1,
                       indent: 15,
                       endIndent: 15,
@@ -76,7 +76,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       title: 'Email',
                       subTitle: user == null ? 'email' : user.email.toString(),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     )
                   ],
@@ -106,11 +106,11 @@ class _ColumnItem extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text(
                 title,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               )),
           Text(
             subTitle,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
         ],
       ),

@@ -17,9 +17,9 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  TextEditingController _searchController = TextEditingController();
-  Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  final TextEditingController _searchController = TextEditingController();
+  final Completer<GoogleMapController> _controller = Completer();
+  static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(53.42796133580664, -2.085749655962),
     zoom: 7,
   );
@@ -28,6 +28,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
+    // ignore: unrelated_type_equality_checks
     if (Platform.android == TargetPlatform.android) {
       AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
     }
@@ -37,12 +38,12 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: AppDrawer(),
+      endDrawer: const AppDrawer(),
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -50,7 +51,7 @@ class _MapScreenState extends State<MapScreen> {
         leading: IconButton(
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
           ),
           iconSize: AppInsets.xxMedium,
@@ -63,7 +64,7 @@ class _MapScreenState extends State<MapScreen> {
           IconButton(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            icon: Icon(
+            icon: const Icon(
               Icons.help_outline,
             ),
             iconSize: AppInsets.xxMedium,
@@ -75,7 +76,7 @@ class _MapScreenState extends State<MapScreen> {
           IconButton(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            icon: Icon(
+            icon: const Icon(
               Icons.menu,
             ),
             iconSize: AppInsets.xxMedium,
@@ -99,7 +100,7 @@ class _MapScreenState extends State<MapScreen> {
               controller.setMapStyle(_mapStyle);
             },
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 100),
             child: Align(
               alignment: Alignment.topCenter,
@@ -111,7 +112,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 150, left: 15, right: 15),
+            padding: const EdgeInsets.only(top: 150, left: 15, right: 15),
             child: Align(
               alignment: Alignment.topCenter,
               //right: 20,
@@ -124,9 +125,9 @@ class _MapScreenState extends State<MapScreen> {
                 height: 50,
                 child: TextFormField(
                   controller: _searchController,
-                  decoration: new InputDecoration(
+                  decoration: const InputDecoration(
                       icon: Padding(
-                        padding: const EdgeInsets.only(
+                        padding: EdgeInsets.only(
                           left: 8.0,
                         ),
                         child: Icon(

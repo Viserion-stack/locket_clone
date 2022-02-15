@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
 
 // ignore: must_be_immutable
 class _LoginFormWidget extends StatefulWidget {
-  _LoginFormWidget({Key? key}) : super(key: key);
+  const _LoginFormWidget({Key? key}) : super(key: key);
 
   @override
   State<_LoginFormWidget> createState() => _LoginFormWidgetState();
@@ -37,7 +37,7 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
   // ignore: unused_field
   String _email = '';
 
-  GlobalMethods _globalMethods = GlobalMethods();
+  final GlobalMethods _globalMethods = GlobalMethods();
 
   // String _pasword = '';
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -138,7 +138,7 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: AppInsets.xxMedium,
                         height: AppInsets.xxMedium,
                         child: Image.asset(
@@ -205,7 +205,7 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
                 ),
                 Form(
                   key: _formKey,
-                  child: Container(
+                  child: SizedBox(
                     height: AppInsets.xxxLarge,
                     width: context.screenSize.width * 0.95,
                     child: TextFormField(
