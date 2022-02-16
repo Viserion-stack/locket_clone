@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 
 class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const StandardAppbar({Key? key, required this.onHelp, required this.onMenu})
+  const StandardAppbar(
+      {Key? key,
+      required this.onHelp,
+      required this.onMenu,
+      this.backgroundColor,
+      this.appbarItemsColor})
       : super(key: key);
   final Function onHelp;
   final Function onMenu;
+  final Color? backgroundColor;
+  final Color? appbarItemsColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFFF3F1EB),
+      backgroundColor: backgroundColor ?? const Color(0xFFF3F1EB),
       leading: IconButton(
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
@@ -18,7 +25,7 @@ class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
           Icons.arrow_back,
         ),
         iconSize: AppInsets.xxMedium,
-        color: Colors.black,
+        color: appbarItemsColor ?? Colors.black,
         onPressed: () {
           Navigator.of(context).pop();
         },
@@ -31,7 +38,7 @@ class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
             Icons.help_outline,
           ),
           iconSize: AppInsets.xxMedium,
-          color: Colors.black,
+          color: appbarItemsColor ?? Colors.black,
           onPressed: () => onHelp,
         ),
         IconButton(
@@ -41,7 +48,7 @@ class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
               Icons.menu,
             ),
             iconSize: AppInsets.xxMedium,
-            color: Colors.black,
+            color: appbarItemsColor ?? Colors.black,
             onPressed: () => onMenu),
       ],
       elevation: 0.0,

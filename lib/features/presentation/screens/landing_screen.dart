@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:locket_clone/features/presentation/screens/introduction/introduction_screen.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -108,7 +109,9 @@ class _LandingScreenState extends State<LandingScreen>
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CheckMyPriceScreen.routeName);
+                },
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 60.0, right: 60, top: 20, bottom: 20),

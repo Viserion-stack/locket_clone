@@ -43,10 +43,11 @@ dependencies:
   firebase_auth: ^3.3.4
   provider: ^6.0.1
   font_awesome_flutter: ^9.2.0
-  google_fonts: ^2.2.0
+  google_fonts: 2.2.0
   google_maps_flutter: ^2.1.1
   webview_flutter: ^3.0.0
   google_sign_in: ^5.2.1
+  introduction_screen: ^3.0.0
   
 
 dev_dependencies:
