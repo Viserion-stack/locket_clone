@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/screens/about_locket.dart';
+import 'package:locket_clone/features/presentation/screens/feedback/leave_feedback_screen.dart';
 import 'package:locket_clone/features/presentation/screens/home_screen.dart';
 import 'package:locket_clone/features/presentation/screens/introduction/introduction_screen.dart';
 import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         AboutLocket.routeName: (ctx) => const AboutLocket(),
         LandingScreen.routeName: (ctx) => const LandingScreen(),
         CheckMyPriceScreen.routeName: (ctx) => const CheckMyPriceScreen(),
+        LeaveFeedbackScreen.routeName: (ctx) => const LeaveFeedbackScreen(),
       },
       title: 'Locket clone',
       theme: AppTheme().theme(LightPalette()),

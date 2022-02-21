@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:locket_clone/features/presentation/screens/feedback/leave_feedback_screen.dart';
 
 import '../application/app_insets.dart';
 
@@ -137,7 +138,10 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                     color: Colors.white,
                     title: 'Leave a feedback',
                     subTitle: 'Tell us what\'s on your mind.',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(LeaveFeedbackScreen.routeName);
+                    },
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(

@@ -5,7 +5,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
+import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
+
+import '../../widgets/drawer/drawer.dart';
 
 class CheckMyPriceScreen extends StatefulWidget {
   static const routeName = '/CheckMyPrice-Screen';
@@ -87,6 +90,7 @@ class _MyBodyWidget extends StatefulWidget {
 
 class _MyBodyWidgetState extends State<_MyBodyWidget>
     with TickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   AnimationController? controller;
   Animation<double>? annimation;
   AnimationController? controller1;
@@ -120,7 +124,7 @@ class _MyBodyWidgetState extends State<_MyBodyWidget>
         setState(() {});
       });
     controller!.forward();
-    print(widget.value);
+    //print(widget.value);
     if (widget.value == 3.0) {
       controller1 = AnimationController(
           duration: const Duration(seconds: 5), vsync: this);
@@ -147,10 +151,16 @@ class _MyBodyWidgetState extends State<_MyBodyWidget>
   Widget build(BuildContext context) {
     int currentImage = (widget.value.toInt() - 1);
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: const AppDrawer(),
       backgroundColor: widget.color,
       appBar: StandardAppbar(
-        onMenu: () {},
-        onHelp: () {},
+        onMenu: () {
+          _scaffoldKey.currentState!.openEndDrawer();
+        },
+        onHelp: () {
+          Navigator.of(context).pushNamed(QuestionsScreen.routeName);
+        },
         backgroundColor: widget.value == 3.0 ? Color(0xFF20201F) : widget.color,
         appbarItemsColor: widget.appbarItemsColor,
       ),

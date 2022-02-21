@@ -32,15 +32,16 @@ class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          icon: const Icon(
-            Icons.help_outline,
-          ),
-          iconSize: AppInsets.xxMedium,
-          color: appbarItemsColor ?? Colors.black,
-          onPressed: () => onHelp,
-        ),
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            icon: const Icon(
+              Icons.help_outline,
+            ),
+            iconSize: AppInsets.xxMedium,
+            color: appbarItemsColor ?? Colors.black,
+            onPressed: () {
+              onHelp()!;
+            }),
         IconButton(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
@@ -49,7 +50,9 @@ class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
             ),
             iconSize: AppInsets.xxMedium,
             color: appbarItemsColor ?? Colors.black,
-            onPressed: () => onMenu),
+            onPressed: () {
+              onMenu();
+            }),
       ],
       elevation: 0.0,
     );
