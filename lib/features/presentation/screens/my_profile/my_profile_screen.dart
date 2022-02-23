@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 
+import '../../widgets/drawer/drawer.dart';
+
 class MyProfileScreen extends StatefulWidget {
   static const routeName = '/MyProfile-Screen';
   const MyProfileScreen({Key? key}) : super(key: key);
@@ -19,6 +21,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
     final user = FirebaseAuth.instance.currentUser;
     var userToDisplay = user?.displayName!.split(' ');
     return Scaffold(
+      endDrawer: const AppDrawer(),
       backgroundColor: const Color(0xFFF3F1EB),
       key: _scaffoldKey,
       appBar: StandardAppbar(

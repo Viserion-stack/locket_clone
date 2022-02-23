@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/feedback/leave_feedback_screen.dart';
+import 'package:locket_clone/features/presentation/screens/licences/licences_screen.dart';
 
 import '../application/app_insets.dart';
+import '../widgets/drawer/drawer.dart';
 
 class QuestionsScreen extends StatefulWidget {
   static const routeName = '/Questions-screen';
@@ -14,46 +16,14 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: const AppDrawer(),
       backgroundColor: Color(0xFFF3F1EB),
-      // appBar: AppBar(
-      //   elevation: 0.0,
-      //   backgroundColor: Color(0xFFF3F1EB),
-      //   title: Text(
-      //     'Got a question?',
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //     ),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       highlightColor: Colors.transparent,
-      //       splashColor: Colors.transparent,
-      //       icon: Icon(
-      //         Icons.menu,
-      //       ),
-      //       iconSize: AppInsets.xxMedium,
-      //       color: Colors.black,
-      //       onPressed: () {
-      //         //Navigator.of(context).pushNamed(QuestionsScreen.);
-      //       },
-      //     ),
-      //   ],
-      //   leading: IconButton(
-      //     highlightColor: Colors.transparent,
-      //     splashColor: Colors.transparent,
-      //     icon: Icon(
-      //       Icons.arrow_back,
-      //     ),
-      //     iconSize: AppInsets.xxMedium,
-      //     color: Colors.black,
-      //     onPressed: () {
-      //       Navigator.of(context).pop();
-      //     },
-      //   ),
-      // ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -79,6 +49,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 color: Colors.black,
                 onPressed: () {
                   //Navigator.of(context).pushNamed(QuestionsScreen.);
+                  _scaffoldKey.currentState!.openEndDrawer();
                 },
               ),
             ],
@@ -149,7 +120,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                     color: Colors.white,
                     title: 'Licences',
                     subTitle: 'Show Application licences.',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed(LicencesScreen.routeName);
+                    },
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(

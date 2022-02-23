@@ -19,6 +19,7 @@ class LeaveFeedbackScreen extends StatefulWidget {
 
 class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
   final _formKey = GlobalKey<FormState>();
+  bool Valid = false;
 
   // ignore: unused_field
   String _firstName = '';
@@ -102,7 +103,8 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                   const Text(
                     'We\'d love to hear from you. Do you have questions? Or maybe just want to suggest something? There\'s a way to do it.',
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
+                      color: Colors.grey,
                     ),
                   ),
                   SizedBox(
@@ -193,10 +195,24 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                           onSaved: (newValue) {
                             _email = newValue!;
                           },
+                          onChanged: (val) {
+                            final _isValid = _formKey.currentState!.validate();
+                            if (_isValid) {
+                              setState(() {
+                                Valid = true;
+                              });
+                              //_formKey.currentState!.save();
+                            }
+                          },
+                          // onEditingComplete: () {
+
+                          // },
                           textInputAction: TextInputAction.next,
                           cursorWidth: 0.0,
                           maxLines: 10,
                           decoration: InputDecoration(
+                            alignLabelWithHint: true,
+                            //hintMaxLines: 1,
                             labelStyle: TextStyle(color: Colors.black),
                             labelText: 'Message',
                             fillColor: Colors.white,
@@ -229,11 +245,12 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                       // Navigator.of(context)
                       //     .pushReplacementNamed(HomeScreen.routeName);
                     },
-                    backgroundColorButton: Color(0xFFFFA142),
+                    backgroundColorButton:
+                        Valid ? Color(0xFFFFA142) : Colors.grey.shade400,
                     child: Text(
                       'NEXT',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Valid ? Colors.black : Colors.grey.shade500,
                         fontSize: AppInsets.xMedium,
                         fontWeight: FontWeight.w700,
                       ),

@@ -11,6 +11,7 @@ import 'package:locket_clone/features/presentation/screens/login/loging_screen.d
 import 'package:locket_clone/features/presentation/screens/map/maps_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
 import 'features/presentation/auth/auth_stream.dart';
+import 'features/presentation/screens/licences/licences_screen.dart';
 import 'features/presentation/screens/questions_screen.dart';
 
 void main() async {
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         LandingScreen.routeName: (ctx) => const LandingScreen(),
         CheckMyPriceScreen.routeName: (ctx) => const CheckMyPriceScreen(),
         LeaveFeedbackScreen.routeName: (ctx) => const LeaveFeedbackScreen(),
+        LicencesScreen.routeName: (ctx) => const LicencesScreen(),
       },
       title: 'Locket clone',
       theme: AppTheme().theme(LightPalette()),
