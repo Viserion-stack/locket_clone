@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/screens/feedback/leave_feedback_screen.dart';
 import 'package:locket_clone/features/presentation/screens/licences/licences_screen.dart';
 
-import '../application/app_insets.dart';
-import '../widgets/drawer/drawer.dart';
+import '../../application/app_insets.dart';
+import '../../widgets/drawer/drawer.dart';
 
 class QuestionsScreen extends StatefulWidget {
   static const routeName = '/Questions-screen';

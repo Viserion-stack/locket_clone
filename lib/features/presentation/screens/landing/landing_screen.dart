@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/screens/introduction/introduction_screen.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 
@@ -31,11 +32,7 @@ class _LandingScreenState extends State<LandingScreen>
         setState(() {});
       })
       ..addStatusListener((animationStatus) {
-        if (animationStatus == AnimationStatus.completed) {
-          // _animationController.reverse().then((value) {
-          //_animationController.reverse();
-          // });
-        }
+        if (animationStatus == AnimationStatus.completed) {}
       });
     _animationController.repeat(reverse: true);
 
@@ -69,11 +66,9 @@ class _LandingScreenState extends State<LandingScreen>
           ),
           Align(
             alignment: Alignment.center,
-            //top: MediaQuery.of(context).size.height * .35,
-            //left: MediaQuery.of(context).size.width * .15,
             child: SizedBox(
-              height: 100,
-              width: 100,
+              height: AppInsets.xxxxmLarge,
+              width: AppInsets.xxxxmLarge,
               child: Image.asset(
                 'assets/images/Icon.png',
               ),
@@ -88,9 +83,9 @@ class _LandingScreenState extends State<LandingScreen>
                 child: Text(
                   'LOCKET',
                   style: TextStyle(
-                    fontSize: 65,
+                    fontSize: AppInsets.xxxxLarge,
                     color: Colors.white,
-                    letterSpacing: 5,
+                    letterSpacing: AppInsets.xSmall,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -104,22 +99,25 @@ class _LandingScreenState extends State<LandingScreen>
                   onPrimary: Colors.white,
                   textStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 40,
+                    fontSize: AppInsets.mLarge,
                   ),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
+                      borderRadius: BorderRadius.circular(AppInsets.small)),
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed(CheckMyPriceScreen.routeName);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      left: 60.0, right: 60, top: 20, bottom: 20),
+                      left: AppInsets.xxxLarge,
+                      right: AppInsets.xxxLarge,
+                      top: AppInsets.xMedium,
+                      bottom: AppInsets.xMedium),
                   child: Text(
                     'CHECK MY PRICE',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: AppInsets.xMedium,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -131,7 +129,7 @@ class _LandingScreenState extends State<LandingScreen>
                   'Arleady have an account?',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: AppInsets.xmMedium,
                   ),
                 ),
               ),
@@ -146,7 +144,7 @@ class _LandingScreenState extends State<LandingScreen>
                 child: Text(
                   'Log in ->',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: AppInsets.xmMedium,
                     color: Colors.white,
                     decoration: TextDecoration.underline,
                   ),

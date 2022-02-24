@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/widgets/drawer/drawer.dart';
-import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/screens/question/questions_screen.dart';
 
-import 'login/loging_screen.dart';
-import 'map/maps_screen.dart';
+import '../login/loging_screen.dart';
+import '../map/maps_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/Home-screen';
@@ -37,7 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
             stretch: true,
             expandedHeight: 150,
             elevation: 0.0,
-            backgroundColor: const Color(0xFFF3F1EB),
+            backgroundColor: context.themeData.appBarTheme
+                .backgroundColor, //const Color(0xFFF3F1EB),
             actions: [
               IconButton(
                 highlightColor: Colors.transparent,
@@ -96,26 +97,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.of(context).pushNamed(MapScreen.routeName);
                     },
                   ),
-                  // const _userTileHeightSpace(height: 10),
-                  // _userListTile(
-                  //   imagePath: 'assets/images/rece.png',
-                  //   tWidget: SizedBox(),
-                  //   // Image.asset(
-                  //   //   'assets/images/rece.png',
-                  //   //   fit: BoxFit.cover,
-                  //   // ),
-                  //   //lIcon: Icons.call,
-                  //   color: Colors.white,
-                  //   title: 'Refer a friend',
-                  //   subTitle: 'Refer your firend... win great prizes!',
-                  //   onTap: () {},
-                  // ),
                   const ReferCard(),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
                     tWidget: const SizedBox(),
                     imagePath: 'assets/images/iPod.png',
-                    //lIcon: Icons.call,
                     color: Colors.white54,
                     title: 'Smart store',
                     subTitle: 'Get exclusive discounts tech ->',
@@ -159,21 +145,25 @@ class _userListTile extends StatelessWidget {
       Card(
         color: color,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(AppInsets.medium),
         ),
         elevation: 0.0,
         child: ListTile(
-          contentPadding: const EdgeInsets.only(left: 20, top: 20, bottom: 15),
+          contentPadding: const EdgeInsets.only(
+              left: AppInsets.xMedium,
+              top: AppInsets.xMedium,
+              bottom: AppInsets.medium),
           dense: true,
           title: Text(
             title,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                fontSize: AppInsets.mmMedium, fontWeight: FontWeight.bold),
           ),
           subtitle: subTitle == null
               ? null
               : Text(
                   subTitle!,
-                  style: const TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: AppInsets.xmMedium),
                 ),
           onTap: onTap,
           trailing: tWidget == null
@@ -182,12 +172,12 @@ class _userListTile extends StatelessWidget {
                   icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.black,
-                    size: 18,
+                    size: AppInsets.xmMedium,
                   ),
                 )
               : const SizedBox(
-                  width: 60,
-                  height: 100,
+                  width: AppInsets.xxxLarge,
+                  height: AppInsets.xxxxmLarge,
                 ),
         ),
       ),
@@ -196,16 +186,16 @@ class _userListTile extends StatelessWidget {
               top: context.screenSize.height * .01,
               right: context.screenSize.width * .008,
               child: SizedBox(
-                  height: 80,
-                  width: 100,
+                  height: AppInsets.xxxmmLarge,
+                  width: AppInsets.xxxxmLarge,
                   child: Image.asset(
                     imagePath!,
                     fit: BoxFit.contain,
                   )),
             )
           : const SizedBox(
-              width: 100,
-              height: 100,
+              width: AppInsets.xxxxmLarge,
+              height: AppInsets.xxxxmLarge,
             )
     ]);
   }
@@ -285,24 +275,22 @@ class _ReferCardState extends State<ReferCard>
         // height: _heightAnimation.value.height,
         constraints: BoxConstraints(minHeight: isExpanded ? 455 : 170),
         width: context.screenSize.width * 0.75,
-        padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 5),
+        padding: const EdgeInsets.only(
+            left: AppInsets.sMedium,
+            right: AppInsets.sMedium,
+            bottom: AppInsets.xSmall),
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Stack(children: [
             Column(
               children: <Widget>[
                 const SizedBox(
-                  height: 18,
+                  height: AppInsets.xmMedium,
                 ),
                 Stack(children: [
                   _userListTile(
                     imagePath: 'assets/images/rece.png',
                     tWidget: const SizedBox(),
-                    // Image.asset(
-                    //   'assets/images/rece.png',
-                    //   fit: BoxFit.cover,
-                    // ),
-                    //lIcon: Icons.call,
                     color: Colors.white,
                     title: 'Refer a friend',
                     subTitle: 'Refer your firend... win great prizes!',
@@ -314,8 +302,8 @@ class _ReferCardState extends State<ReferCard>
                         height: 1,
                         child: Divider(
                           thickness: 1,
-                          indent: 15,
-                          endIndent: 15,
+                          indent: AppInsets.medium,
+                          endIndent: AppInsets.medium,
                         ),
                       )
                     : GestureDetector(
@@ -327,31 +315,34 @@ class _ReferCardState extends State<ReferCard>
                         child: const Icon(
                           Icons.keyboard_arrow_down_outlined,
                           color: Colors.grey,
-                          size: 30,
+                          size: AppInsets.xxMedium,
                         ),
                       ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(AppInsets.mxSmall),
                   child: Column(
                     children: const [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: AppInsets.medium),
                         child: Text(
                           'Invite your friend to Locket and you\'ll get a mystery prize 60 days from their policy start date.',
-                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                          style: TextStyle(
+                              fontSize: AppInsets.medium, color: Colors.grey),
                           textAlign: TextAlign.justify,
                         ),
                       ),
                       Text(
                         'vise8025.',
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: AppInsets.xxMedium,
                           color: Colors.black,
                         ),
                       ),
                       Text(
                         'Your referal code.',
-                        style: TextStyle(fontSize: 17, color: Colors.grey),
+                        style: TextStyle(
+                            fontSize: AppInsets.sMedium, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -399,7 +390,7 @@ class _ReferCardState extends State<ReferCard>
                 ),
                 !isExpanded
                     ? const SizedBox(
-                        height: 10,
+                        height: AppInsets.small,
                       )
                     : GestureDetector(
                         onTap: () {
@@ -410,11 +401,11 @@ class _ReferCardState extends State<ReferCard>
                         child: const Icon(
                           Icons.keyboard_arrow_up_outlined,
                           color: Colors.grey,
-                          size: 35,
+                          size: AppInsets.large,
                         ),
                       ),
                 const SizedBox(
-                  height: 20,
+                  height: AppInsets.xmMedium,
                 ),
               ],
             ),
@@ -422,8 +413,8 @@ class _ReferCardState extends State<ReferCard>
               top: context.screenSize.height * 0.01,
               left: context.screenSize.width * 0.05,
               child: SizedBox(
-                  height: 35,
-                  width: 35,
+                  height: AppInsets.large,
+                  width: AppInsets.large,
                   child: Image.asset(
                     'assets/images/messageIcon.png',
                     fit: BoxFit.fitWidth,

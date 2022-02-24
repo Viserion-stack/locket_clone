@@ -9,7 +9,13 @@ class AppInsets {
 
   static const double medium = 15;
 
+  static const double sMedium = 16;
+
+  static const double xmMedium = 18;
+
   static const double xMedium = 20;
+
+  static const double mmMedium = 22;
 
   static const double mxMedium = 25;
 
@@ -32,4 +38,8 @@ class AppInsets {
   static const double xxmLarge = 70;
 
   static const double xxxmLarge = 75;
+
+  static const double xxxmmLarge = 80;
+
+  static const double xxxxmLarge = 100;
 }

@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
-import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/screens/landing/landing_screen.dart';
+import 'package:locket_clone/features/presentation/screens/question/questions_screen.dart';
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 
 import '../../widgets/drawer/drawer.dart';

@@ -7,8 +7,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:locket_clone/features/data/datasources/remote/remote.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:locket_clone/features/presentation/screens/home_screen.dart';
-import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/screens/home/home_screen.dart';
+import 'package:locket_clone/features/presentation/screens/question/questions_screen.dart';
 import 'package:locket_clone/features/presentation/services/global_methods.dart';
 
 class LoginScreen extends StatelessWidget {

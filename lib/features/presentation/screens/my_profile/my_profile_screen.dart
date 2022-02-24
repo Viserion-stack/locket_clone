@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/screens/question/questions_screen.dart';
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 
 import '../../widgets/drawer/drawer.dart';

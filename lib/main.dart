@@ -2,17 +2,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
-import 'package:locket_clone/features/presentation/screens/about_locket.dart';
+import 'package:locket_clone/features/presentation/screens/about/about_locket.dart';
 import 'package:locket_clone/features/presentation/screens/feedback/leave_feedback_screen.dart';
-import 'package:locket_clone/features/presentation/screens/home_screen.dart';
+import 'package:locket_clone/features/presentation/screens/home/home_screen.dart';
 import 'package:locket_clone/features/presentation/screens/introduction/introduction_screen.dart';
-import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
+import 'package:locket_clone/features/presentation/screens/landing/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/login/loging_screen.dart';
 import 'package:locket_clone/features/presentation/screens/map/maps_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
 import 'features/presentation/auth/auth_stream.dart';
 import 'features/presentation/screens/licences/licences_screen.dart';
-import 'features/presentation/screens/questions_screen.dart';
+import 'features/presentation/screens/question/questions_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

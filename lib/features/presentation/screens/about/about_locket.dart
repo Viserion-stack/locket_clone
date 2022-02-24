@@ -1,11 +1,11 @@
 import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
-import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/screens/question/questions_screen.dart';
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../widgets/drawer/drawer.dart';
+import '../../widgets/drawer/drawer.dart';
 
 class AboutLocket extends StatefulWidget {
   static const routeName = 'About-locket';

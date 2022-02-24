@@ -2,12 +2,12 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:locket_clone/features/presentation/screens/home_screen.dart';
-import 'package:locket_clone/features/presentation/screens/landing_screen.dart';
+import 'package:locket_clone/features/presentation/screens/home/home_screen.dart';
+import 'package:locket_clone/features/presentation/screens/landing/landing_screen.dart';
 import 'package:locket_clone/features/presentation/screens/my_profile/my_profile_screen.dart';
-import 'package:locket_clone/features/presentation/screens/questions_screen.dart';
+import 'package:locket_clone/features/presentation/screens/question/questions_screen.dart';
 
-import '../../screens/about_locket.dart';
+import '../../screens/about/about_locket.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);

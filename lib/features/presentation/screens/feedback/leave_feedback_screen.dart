@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/application/app_size.dart';
 import 'package:locket_clone/features/presentation/widgets/appbar/standard_appbar.dart';
-
+import 'package:locket_clone/features/presentation/application/application.dart';
 import '../../application/app_insets.dart';
 import '../../widgets/drawer/drawer.dart';
 import '../login/loging_screen.dart';
-import '../questions_screen.dart';
+import '../question/questions_screen.dart';
 
 class LeaveFeedbackScreen extends StatefulWidget {
   static const routeName = 'LeaveFeedback_Screen';
@@ -39,7 +39,7 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
             stretch: true,
             expandedHeight: 150,
             elevation: 0.0,
-            backgroundColor: const Color(0xFFF3F1EB),
+            backgroundColor: context.themeData.appBarTheme.backgroundColor,
             leading: IconButton(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
@@ -48,7 +48,6 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                 color: Colors.black,
               ),
               iconSize: AppInsets.xxMedium,
-              // color: appbarItemsColor ?? Colors.black,
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -88,7 +87,7 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                 'Send feedback',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 24,
+                    fontSize: AppInsets.mxMedium,
                     fontWeight: FontWeight.normal),
               ),
             ),
@@ -96,14 +95,14 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 30,
+                horizontal: AppInsets.xxMedium,
               ),
               child: Column(
                 children: [
                   const Text(
                     'We\'d love to hear from you. Do you have questions? Or maybe just want to suggest something? There\'s a way to do it.',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: AppInsets.xMedium,
                       color: Colors.grey,
                     ),
                   ),
@@ -143,11 +142,10 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                               borderSide:
                                   BorderSide(width: 0, style: BorderStyle.none),
                             ),
-                            //prefixIcon: const Icon(Icons.person),
                           ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: AppInsets.xxMedium,
                         ),
                         TextFormField(
                           key: const ValueKey('email'),
@@ -178,11 +176,10 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                               borderSide:
                                   BorderSide(width: 0, style: BorderStyle.none),
                             ),
-                            //prefixIcon: const Icon(Icons.person),
                           ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: AppInsets.xxMedium,
                         ),
                         TextFormField(
                           key: const ValueKey('message'),
@@ -201,18 +198,13 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                               setState(() {
                                 Valid = true;
                               });
-                              //_formKey.currentState!.save();
                             }
                           },
-                          // onEditingComplete: () {
-
-                          // },
                           textInputAction: TextInputAction.next,
                           cursorWidth: 0.0,
-                          maxLines: 10,
+                          maxLines: AppInsets.small.toInt(),
                           decoration: InputDecoration(
                             alignLabelWithHint: true,
-                            //hintMaxLines: 1,
                             labelStyle: TextStyle(color: Colors.black),
                             labelText: 'Message',
                             fillColor: Colors.white,
@@ -228,11 +220,10 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                               borderSide:
                                   BorderSide(width: 0, style: BorderStyle.none),
                             ),
-                            //prefixIcon: const Icon(Icons.person),
                           ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: AppInsets.xxMedium,
                         ),
                       ],
                     ),
@@ -241,10 +232,7 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                     height: AppInsets.xMedium,
                   ),
                   LoginScreenButton(
-                    function: () {
-                      // Navigator.of(context)
-                      //     .pushReplacementNamed(HomeScreen.routeName);
-                    },
+                    function: () {},
                     backgroundColorButton:
                         Valid ? Color(0xFFFFA142) : Colors.grey.shade400,
                     child: Text(
