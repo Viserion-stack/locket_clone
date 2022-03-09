@@ -39,7 +39,6 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
 
   final GlobalMethods _globalMethods = GlobalMethods();
 
-  // String _pasword = '';
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> _googleSingIn() async {
@@ -61,22 +60,24 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
           FirebaseFirestore.instance
               .collection('users')
               .doc(authResult.user!.uid)
-              .set({
-            'id': authResult.user!.uid,
-            'name': authResult.user!.displayName,
-            'email': authResult.user!.email,
-            'phoneNumber': authResult.user!.phoneNumber,
-            'imageUrl': authResult.user!.photoURL,
-            'joinedDate': formattedDate,
-            //'createdAt': Timestamp.now(),
-          });
+              .set(
+            {
+              'id': authResult.user!.uid,
+              'name': authResult.user!.displayName,
+              'email': authResult.user!.email,
+              'phoneNumber': authResult.user!.phoneNumber,
+              'imageUrl': authResult.user!.photoURL,
+              'joinedDate': formattedDate,
+            },
+          );
 
           Navigator.of(context).pushNamed(HomeScreen.routeName);
         } catch (error) {
-          _globalMethods.authDialog(context, error.toString());
-        } finally {
-          //print('Logged');
-        }
+          _globalMethods.authDialog(
+            context,
+            error.toString(),
+          );
+        } finally {}
       }
     }
   }
@@ -167,10 +168,11 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
                   backgroundColorButton: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: AppInsets.xxMedium,
-                        right: AppInsets.xxMedium,
-                        top: 20,
-                        bottom: 20),
+                      left: AppInsets.xxMedium,
+                      right: AppInsets.xxMedium,
+                      top: 20,
+                      bottom: 20,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -232,10 +234,11 @@ class _LoginFormWidgetState extends State<_LoginFormWidget> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppInsets.mSmall),
-                          borderSide:
-                              BorderSide(width: 0, style: BorderStyle.none),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
                         ),
-                        //prefixIcon: const Icon(Icons.person),
                       ),
                     ),
                   ),
@@ -293,7 +296,10 @@ class LoginScreenButton extends StatelessWidget {
             fontSize: AppInsets.mLarge,
           ),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppInsets.small)),
+            borderRadius: BorderRadius.circular(
+              AppInsets.small,
+            ),
+          ),
         ),
         onPressed: function,
         child: child,

@@ -42,16 +42,21 @@ class _CheckMyPriceScreenState extends State<CheckMyPriceScreen> {
   int currentIndex = 0;
   @override
   void initState() {
-    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      if (currentIndex < 2) {
-        currentIndex++;
-        controller.animateToPage(currentIndex,
+    Timer.periodic(
+      const Duration(seconds: 3),
+      (Timer timer) {
+        if (currentIndex < 2) {
+          currentIndex++;
+          controller.animateToPage(
+            currentIndex,
             duration: const Duration(milliseconds: 350),
-            curve: Curves.fastOutSlowIn);
-      } else {
-        currentIndex = 2;
-      }
-    });
+            curve: Curves.fastOutSlowIn,
+          );
+        } else {
+          currentIndex = 2;
+        }
+      },
+    );
     super.initState();
   }
 
@@ -116,8 +121,10 @@ class _MyBodyWidgetState extends State<_MyBodyWidget>
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(duration: const Duration(seconds: 3), vsync: this);
+    controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
     annimation = Tween(begin: 0.0, end: 1.0).animate(
       controller!,
     )..addListener(() {
@@ -127,14 +134,16 @@ class _MyBodyWidgetState extends State<_MyBodyWidget>
     //print(widget.value);
     if (widget.value == 3.0) {
       controller1 = AnimationController(
-          duration: const Duration(seconds: 5), vsync: this);
-      annimation1 =
-          CurvedAnimation(parent: controller1!, curve: Curves.easeInOutBack);
+        duration: const Duration(seconds: 5),
+        vsync: this,
+      );
+      annimation1 = CurvedAnimation(
+        parent: controller1!,
+        curve: Curves.easeInOutBack,
+      );
 
       controller1!.forward();
     }
-
-    //_buttonController!.forward();
   }
 
   @override
@@ -144,7 +153,6 @@ class _MyBodyWidgetState extends State<_MyBodyWidget>
     if (widget.value == 3.0) {
       controller1!.dispose();
     }
-    //_buttonController!.dispose();
   }
 
   @override
@@ -165,130 +173,139 @@ class _MyBodyWidgetState extends State<_MyBodyWidget>
         appbarItemsColor: widget.appbarItemsColor,
       ),
       body: Center(
-          child: Padding(
-        padding: const EdgeInsets.only(right: 16.0, left: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 20, 5, 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    // height: 100,
-                    // width: 100,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: LinearProgressIndicator(
-                        minHeight: 5,
-                        backgroundColor: Colors.grey,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                        value: widget.value == 1 ? annimation!.value : 1,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 7,
-                  ),
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: LinearProgressIndicator(
-                        minHeight: 5,
-                        backgroundColor: Colors.grey,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                        value: widget.value == 2
-                            ? annimation!.value
-                            : widget.value == 3
-                                ? 1
-                                : 0,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 7,
-                  ),
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: LinearProgressIndicator(
-                        minHeight: 5,
-                        backgroundColor: Colors.grey,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                        value: widget.value == 3 ? annimation!.value : 0,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            CircleAvatar(
-              backgroundColor: Colors.transparent,
-              radius: 100,
-              backgroundImage: AssetImage(introImages[currentImage]),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              introTextHeader[currentImage],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 39,
-                color: widget.value == 3 ? Colors.white : Colors.black,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              introParagraph[currentImage],
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 18,
-                color: widget.value == 3 ? Colors.white : Colors.black,
-              ),
-            ),
-            currentImage == 2
-                ? FadeTransition(
-                    opacity: annimation1!,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 25.0),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFFFA142),
-                          onPrimary: Colors.white,
-                          textStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 40,
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
+        child: Padding(
+          padding: const EdgeInsets.only(
+            right: 16.0,
+            left: 16,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 20, 5, 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: LinearProgressIndicator(
+                          minHeight: 5,
+                          backgroundColor: Colors.grey,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                          value: widget.value == 1 ? annimation!.value : 1,
                         ),
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushNamed(LandingScreen.routeName);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 60.0, right: 60, top: 20, bottom: 20),
-                          child: Text(
-                            'CHECK MY PRICE',
-                            style: TextStyle(
+                      ),
+                    ),
+                    SizedBox(
+                      width: 7,
+                    ),
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: LinearProgressIndicator(
+                          minHeight: 5,
+                          backgroundColor: Colors.grey,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                          value: widget.value == 2
+                              ? annimation!.value
+                              : widget.value == 3
+                                  ? 1
+                                  : 0,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 7,
+                    ),
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: LinearProgressIndicator(
+                          minHeight: 5,
+                          backgroundColor: Colors.grey,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                          value: widget.value == 3 ? annimation!.value : 0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                radius: 100,
+                backgroundImage: AssetImage(introImages[currentImage]),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                introTextHeader[currentImage],
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 39,
+                  color: widget.value == 3 ? Colors.white : Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                introParagraph[currentImage],
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: widget.value == 3 ? Colors.white : Colors.black,
+                ),
+              ),
+              currentImage == 2
+                  ? FadeTransition(
+                      opacity: annimation1!,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 25.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFFFA142),
+                            onPrimary: Colors.white,
+                            textStyle: TextStyle(
                               color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
+                              fontSize: 40,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(LandingScreen.routeName);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 60.0,
+                              right: 60,
+                              top: 20,
+                              bottom: 20,
+                            ),
+                            child: Text(
+                              'CHECK MY PRICE',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                : SizedBox(),
-          ],
+                    )
+                  : SizedBox(),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

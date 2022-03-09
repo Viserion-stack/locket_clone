@@ -7,6 +7,12 @@ final sl = GetIt.instance;
 Future<void> init() async {
   sl
     ..registerLazySingleton(() => LoginService(sl()))
-    ..registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(sl()))
-    ..registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl());
+    ..registerLazySingleton<LoginRepository>(
+      () => LoginRepositoryImpl(
+        sl(),
+      ),
+    )
+    ..registerLazySingleton<RemoteDataSource>(
+      () => RemoteDataSourceImpl(),
+    );
 }

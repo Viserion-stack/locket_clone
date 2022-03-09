@@ -32,12 +32,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             expandedHeight: 150,
             elevation: 0.0,
             backgroundColor: Color(0xFFF3F1EB),
-            // title: Text(
-            //   'Got a question?',
-            //   style: TextStyle(
-            //     color: Colors.black,
-            //   ),
-            // ),
             actions: [
               IconButton(
                 highlightColor: Colors.transparent,
@@ -73,15 +67,19 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               title: Text(
                 'Got a question?',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.normal),
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ),
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 8.0),
+              padding: EdgeInsets.only(
+                left: 8.0,
+                right: 8.0,
+              ),
               child: ListView(
                 primary: false,
                 shrinkWrap: true,
@@ -96,7 +94,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
-                    //lIcon: Icons.call,
                     color: Colors.white,
                     title: 'Contact with us',
                     subTitle:
@@ -105,7 +102,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
-                    //lIcon: Icons.call,
                     color: Colors.white,
                     title: 'Leave a feedback',
                     subTitle: 'Tell us what\'s on your mind.',
@@ -116,7 +112,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
-                    //lIcon: Icons.call,
                     color: Colors.white,
                     title: 'Licences',
                     subTitle: 'Show Application licences.',
@@ -126,7 +121,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                   ),
                   const _userTileHeightSpace(height: 10),
                   _userListTile(
-                    //lIcon: Icons.call,
                     color: Colors.white,
                     title: 'Complains',
                     subTitle: 'Tell us what went wrong.',
@@ -172,11 +166,17 @@ class _userListTile extends StatelessWidget {
       ),
       elevation: 0.0,
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 25.0),
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 25.0,
+          horizontal: 25.0,
+        ),
         dense: true,
         title: Text(
           title,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         subtitle: subTitle == null
             ? null
@@ -199,8 +199,10 @@ class _userListTile extends StatelessWidget {
 
 class _userTileHeightSpace extends StatelessWidget {
   final double height;
-  const _userTileHeightSpace({Key? key, required this.height})
-      : super(key: key);
+  const _userTileHeightSpace({
+    Key? key,
+    required this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

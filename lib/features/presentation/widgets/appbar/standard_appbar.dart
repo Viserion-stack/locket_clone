@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:locket_clone/features/presentation/application/application.dart';
 
 class StandardAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const StandardAppbar(
-      {Key? key,
-      required this.onHelp,
-      required this.onMenu,
-      this.backgroundColor,
-      this.appbarItemsColor})
-      : super(key: key);
+  const StandardAppbar({
+    Key? key,
+    required this.onHelp,
+    required this.onMenu,
+    this.backgroundColor,
+    this.appbarItemsColor,
+  }) : super(key: key);
   final Function onHelp;
   final Function onMenu;
   final Color? backgroundColor;

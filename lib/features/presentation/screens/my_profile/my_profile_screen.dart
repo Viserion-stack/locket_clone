@@ -49,8 +49,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12)),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Column(
                   children: [
                     _ColumnItem(
@@ -94,26 +95,36 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
 }
 
 class _ColumnItem extends StatelessWidget {
-  const _ColumnItem({Key? key, required this.title, required this.subTitle})
-      : super(key: key);
+  const _ColumnItem({
+    Key? key,
+    required this.title,
+    required this.subTitle,
+  }) : super(key: key);
   final String title;
   final String subTitle;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+      padding: const EdgeInsets.symmetric(
+        vertical: 8,
+        horizontal: 15,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                title,
-                style: const TextStyle(fontSize: 18),
-              )),
+            alignment: Alignment.topLeft,
+            child: Text(
+              title,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
           Text(
             subTitle,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
           ),
         ],
       ),

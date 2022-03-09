@@ -98,7 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                   const ReferCard(),
-                  const _userTileHeightSpace(height: 10),
+                  const _userTileHeightSpace(
+                    height: 10,
+                  ),
                   _userListTile(
                     tWidget: const SizedBox(),
                     imagePath: 'assets/images/iPod.png',
@@ -141,63 +143,71 @@ class _userListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Card(
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppInsets.medium),
-        ),
-        elevation: 0.0,
-        child: ListTile(
-          contentPadding: const EdgeInsets.only(
-              left: AppInsets.xMedium,
-              top: AppInsets.xMedium,
-              bottom: AppInsets.medium),
-          dense: true,
-          title: Text(
-            title,
-            style: const TextStyle(
-                fontSize: AppInsets.mmMedium, fontWeight: FontWeight.bold),
+    return Stack(
+      children: [
+        Card(
+          color: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              AppInsets.medium,
+            ),
           ),
-          subtitle: subTitle == null
-              ? null
-              : Text(
-                  subTitle!,
-                  style: const TextStyle(fontSize: AppInsets.xmMedium),
-                ),
-          onTap: onTap,
-          trailing: tWidget == null
-              ? IconButton(
-                  onPressed: tIconCallBack,
-                  icon: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.black,
-                    size: AppInsets.xmMedium,
+          elevation: 0.0,
+          child: ListTile(
+            contentPadding: const EdgeInsets.only(
+                left: AppInsets.xMedium,
+                top: AppInsets.xMedium,
+                bottom: AppInsets.medium),
+            dense: true,
+            title: Text(
+              title,
+              style: const TextStyle(
+                fontSize: AppInsets.mmMedium,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: subTitle == null
+                ? null
+                : Text(
+                    subTitle!,
+                    style: const TextStyle(
+                      fontSize: AppInsets.xmMedium,
+                    ),
                   ),
-                )
-              : const SizedBox(
-                  width: AppInsets.xxxLarge,
-                  height: AppInsets.xxxxmLarge,
-                ),
+            onTap: onTap,
+            trailing: tWidget == null
+                ? IconButton(
+                    onPressed: tIconCallBack,
+                    icon: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.black,
+                      size: AppInsets.xmMedium,
+                    ),
+                  )
+                : const SizedBox(
+                    width: AppInsets.xxxLarge,
+                    height: AppInsets.xxxxmLarge,
+                  ),
+          ),
         ),
-      ),
-      tWidget != null
-          ? Positioned(
-              top: context.screenSize.height * .01,
-              right: context.screenSize.width * .008,
-              child: SizedBox(
-                  height: AppInsets.xxxmmLarge,
-                  width: AppInsets.xxxxmLarge,
-                  child: Image.asset(
-                    imagePath!,
-                    fit: BoxFit.contain,
-                  )),
-            )
-          : const SizedBox(
-              width: AppInsets.xxxxmLarge,
-              height: AppInsets.xxxxmLarge,
-            )
-    ]);
+        tWidget != null
+            ? Positioned(
+                top: context.screenSize.height * .01,
+                right: context.screenSize.width * .008,
+                child: SizedBox(
+                    height: AppInsets.xxxmmLarge,
+                    width: AppInsets.xxxxmLarge,
+                    child: Image.asset(
+                      imagePath!,
+                      fit: BoxFit.contain,
+                    )),
+              )
+            : const SizedBox(
+                width: AppInsets.xxxxmLarge,
+                height: AppInsets.xxxxmLarge,
+              )
+      ],
+    );
   }
 }
 
@@ -245,7 +255,10 @@ class _ReferCardState extends State<ReferCard>
         curve: Curves.fastOutSlowIn,
       ),
     );
-    _opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
+    _opacityAnimation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeIn,
@@ -276,151 +289,168 @@ class _ReferCardState extends State<ReferCard>
         constraints: BoxConstraints(minHeight: isExpanded ? 455 : 170),
         width: context.screenSize.width * 0.75,
         padding: const EdgeInsets.only(
-            left: AppInsets.sMedium,
-            right: AppInsets.sMedium,
-            bottom: AppInsets.xSmall),
+          left: AppInsets.sMedium,
+          right: AppInsets.sMedium,
+          bottom: AppInsets.xSmall,
+        ),
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
-          child: Stack(children: [
-            Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: AppInsets.xmMedium,
-                ),
-                Stack(children: [
-                  _userListTile(
-                    imagePath: 'assets/images/rece.png',
-                    tWidget: const SizedBox(),
-                    color: Colors.white,
-                    title: 'Refer a friend',
-                    subTitle: 'Refer your firend... win great prizes!',
-                    onTap: () {},
+          child: Stack(
+            children: [
+              Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: AppInsets.xmMedium,
                   ),
-                ]),
-                isExpanded
-                    ? const SizedBox(
-                        height: 1,
-                        child: Divider(
-                          thickness: 1,
-                          indent: AppInsets.medium,
-                          endIndent: AppInsets.medium,
-                        ),
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isExpanded = !isExpanded;
-                          });
-                        },
-                        child: const Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          color: Colors.grey,
-                          size: AppInsets.xxMedium,
-                        ),
-                      ),
-                Padding(
-                  padding: const EdgeInsets.all(AppInsets.mxSmall),
-                  child: Column(
-                    children: const [
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: AppInsets.medium),
-                        child: Text(
-                          'Invite your friend to Locket and you\'ll get a mystery prize 60 days from their policy start date.',
-                          style: TextStyle(
-                              fontSize: AppInsets.medium, color: Colors.grey),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
-                      Text(
-                        'vise8025.',
-                        style: TextStyle(
-                          fontSize: AppInsets.xxMedium,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        'Your referal code.',
-                        style: TextStyle(
-                            fontSize: AppInsets.sMedium, color: Colors.grey),
+                  Stack(
+                    children: [
+                      _userListTile(
+                        imagePath: 'assets/images/rece.png',
+                        tWidget: const SizedBox(),
+                        color: Colors.white,
+                        title: 'Refer a friend',
+                        subTitle: 'Refer your firend... win great prizes!',
+                        onTap: () {},
                       ),
                     ],
                   ),
-                ),
-                LoginScreenButton(
-                  function: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(HomeScreen.routeName);
-                  },
-                  backgroundColorButton: const Color(0xFFFFA142),
-                  child: const Text(
-                    'TELL MY FRIENDS ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: AppInsets.xMedium,
-                      fontWeight: FontWeight.w700,
+                  isExpanded
+                      ? const SizedBox(
+                          height: 1,
+                          child: Divider(
+                            thickness: 1,
+                            indent: AppInsets.medium,
+                            endIndent: AppInsets.medium,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isExpanded = !isExpanded;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.keyboard_arrow_down_outlined,
+                            color: Colors.grey,
+                            size: AppInsets.xxMedium,
+                          ),
+                        ),
+                  Padding(
+                    padding: const EdgeInsets.all(
+                      AppInsets.mxSmall,
+                    ),
+                    child: Column(
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: AppInsets.medium),
+                          child: Text(
+                            'Invite your friend to Locket and you\'ll get a mystery prize 60 days from their policy start date.',
+                            style: TextStyle(
+                              fontSize: AppInsets.medium,
+                              color: Colors.grey,
+                            ),
+                            textAlign: TextAlign.justify,
+                          ),
+                        ),
+                        Text(
+                          'vise8025.',
+                          style: TextStyle(
+                            fontSize: AppInsets.xxMedium,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          'Your referal code.',
+                          style: TextStyle(
+                            fontSize: AppInsets.sMedium,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                const _userTileHeightSpace(
-                  height: 22,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(12),
-                    ),
-                  ),
-                  child: LoginScreenButton(
+                  LoginScreenButton(
                     function: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(HomeScreen.routeName);
+                      Navigator.of(context).pushReplacementNamed(
+                        HomeScreen.routeName,
+                      );
                     },
-                    backgroundColorButton: Colors.white,
+                    backgroundColorButton: const Color(0xFFFFA142),
                     child: const Text(
-                      'SEE MY REWARDS',
+                      'TELL MY FRIENDS ',
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.black,
                         fontSize: AppInsets.xMedium,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                ),
-                !isExpanded
-                    ? const SizedBox(
-                        height: AppInsets.small,
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isExpanded = !isExpanded;
-                          });
-                        },
-                        child: const Icon(
-                          Icons.keyboard_arrow_up_outlined,
+                  const _userTileHeightSpace(
+                    height: 22,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.grey,
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(12),
+                      ),
+                    ),
+                    child: LoginScreenButton(
+                      function: () {
+                        Navigator.of(context)
+                            .pushReplacementNamed(HomeScreen.routeName);
+                      },
+                      backgroundColorButton: Colors.white,
+                      child: const Text(
+                        'SEE MY REWARDS',
+                        style: TextStyle(
                           color: Colors.grey,
-                          size: AppInsets.large,
+                          fontSize: AppInsets.xMedium,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                const SizedBox(
-                  height: AppInsets.xmMedium,
-                ),
-              ],
-            ),
-            Positioned(
-              top: context.screenSize.height * 0.01,
-              left: context.screenSize.width * 0.05,
-              child: SizedBox(
-                  height: AppInsets.large,
-                  width: AppInsets.large,
-                  child: Image.asset(
-                    'assets/images/messageIcon.png',
-                    fit: BoxFit.fitWidth,
-                  )),
-            ),
-          ]),
+                    ),
+                  ),
+                  !isExpanded
+                      ? const SizedBox(
+                          height: AppInsets.small,
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            setState(
+                              () {
+                                isExpanded = !isExpanded;
+                              },
+                            );
+                          },
+                          child: const Icon(
+                            Icons.keyboard_arrow_up_outlined,
+                            color: Colors.grey,
+                            size: AppInsets.large,
+                          ),
+                        ),
+                  const SizedBox(
+                    height: AppInsets.xmMedium,
+                  ),
+                ],
+              ),
+              Positioned(
+                top: context.screenSize.height * 0.01,
+                left: context.screenSize.width * 0.05,
+                child: SizedBox(
+                    height: AppInsets.large,
+                    width: AppInsets.large,
+                    child: Image.asset(
+                      'assets/images/messageIcon.png',
+                      fit: BoxFit.fitWidth,
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );

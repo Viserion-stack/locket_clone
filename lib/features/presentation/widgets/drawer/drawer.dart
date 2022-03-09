@@ -25,29 +25,30 @@ class AppDrawer extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      userToDisplay == null ? 'Name' : userToDisplay[0],
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 35,
-                      ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    userToDisplay == null ? 'Name' : userToDisplay[0],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 35,
                     ),
-                    Text(
-                      userToDisplay == null ? 'Last name' : userToDisplay[1],
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 35,
-                      ),
+                  ),
+                  Text(
+                    userToDisplay == null ? 'Last name' : userToDisplay[1],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 35,
                     ),
-                    Text(
-                      user == null ? 'Email' : user.email.toString(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
+                  ),
+                  Text(
+                    user == null ? 'Email' : user.email.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
                     ),
-                  ]),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 10),

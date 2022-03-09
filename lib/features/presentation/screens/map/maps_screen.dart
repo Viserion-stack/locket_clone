@@ -112,31 +112,35 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 150, left: 15, right: 15),
+            padding: const EdgeInsets.only(
+              top: 150,
+              left: 15,
+              right: 15,
+            ),
             child: Align(
               alignment: Alignment.topCenter,
-              //right: 20,
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white),
-                //color: Colors.amber,
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.white,
+                ),
                 width: 350,
                 height: 50,
                 child: TextFormField(
                   controller: _searchController,
                   decoration: const InputDecoration(
-                      icon: Padding(
-                        padding: EdgeInsets.only(
-                          left: 8.0,
-                        ),
-                        child: Icon(
-                          Icons.search_outlined,
-                          color: Colors.black,
-                        ),
+                    icon: Padding(
+                      padding: EdgeInsets.only(
+                        left: 8.0,
                       ),
-                      border: InputBorder.none,
-                      hintText: 'What\'s your postalcode? '),
+                      child: Icon(
+                        Icons.search_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
+                    border: InputBorder.none,
+                    hintText: 'What\'s your postalcode? ',
+                  ),
                 ),
               ),
             ),

@@ -14,7 +14,6 @@ class LicencesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        //backgroundColor: context.themeData.bottomAppBarColor,
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
@@ -76,14 +75,20 @@ class MyListTile extends StatelessWidget {
   String? title;
   String? subtitle;
 
-  MyListTile({Key? key, this.title, this.subtitle}) : super(key: key);
+  MyListTile({
+    Key? key,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
         title!,
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
       ),
       subtitle: Text(subtitle!),
     );

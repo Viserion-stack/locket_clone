@@ -132,15 +132,21 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                             fillColor: Colors.white,
                             filled: true,
                             focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppInsets.mSmall),
-                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(
+                                AppInsets.mSmall,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppInsets.mSmall),
-                              borderSide:
-                                  BorderSide(width: 0, style: BorderStyle.none),
+                              borderRadius: BorderRadius.circular(
+                                AppInsets.mSmall,
+                              ),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
                             ),
                           ),
                         ),
@@ -166,15 +172,20 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                             fillColor: Colors.white,
                             filled: true,
                             focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppInsets.mSmall),
-                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(
+                                AppInsets.mSmall,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
                             ),
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.circular(AppInsets.mSmall),
-                              borderSide:
-                                  BorderSide(width: 0, style: BorderStyle.none),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
                             ),
                           ),
                         ),
@@ -210,15 +221,21 @@ class _LeaveFeedbackScreenState extends State<LeaveFeedbackScreen> {
                             fillColor: Colors.white,
                             filled: true,
                             focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppInsets.mSmall),
-                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(
+                                AppInsets.mSmall,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppInsets.mSmall),
-                              borderSide:
-                                  BorderSide(width: 0, style: BorderStyle.none),
+                              borderRadius: BorderRadius.circular(
+                                AppInsets.mSmall,
+                              ),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
                             ),
                           ),
                         ),

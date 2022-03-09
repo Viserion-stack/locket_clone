@@ -10,19 +10,22 @@ class AuthGate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasData) {
-            return const HomeScreen();
-          } else if (snapshot.hasError) {
-            return const Center(child: Text('Something Went Wrong!'));
-          } else {
-            return const LandingScreen();
-          }
-        });
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snapshot.hasData) {
+          return const HomeScreen();
+        } else if (snapshot.hasError) {
+          return const Center(
+            child: Text('Something Went Wrong!'),
+          );
+        } else {
+          return const LandingScreen();
+        }
+      },
+    );
   }
 }
