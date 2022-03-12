@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
+import 'injector.dart' as di;
 import 'package:locket_clone/features/presentation/application/application.dart';
 import 'package:locket_clone/features/presentation/screens/about/about_locket.dart';
 import 'package:locket_clone/features/presentation/screens/feedback/leave_feedback_screen.dart';
@@ -15,10 +17,13 @@ import 'features/presentation/screens/licences/licences_screen.dart';
 import 'features/presentation/screens/question/questions_screen.dart';
 
 void main() async {
+  await di.init();
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
